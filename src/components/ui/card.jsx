@@ -1,12 +1,12 @@
 
 
-function HotelCard() {
+function HotelCard({source}) {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="mx-auto bg-white rounded-3xl shadow-xl">
         <div className="grid rounded-3xl max-w-[370px] shadow-sm bg-slate-100 flex-col">
           <img
-            src="./public/imag/im.jpg"
+            src={source}
             width="275"
             height="150"
             className="rounded-t-3xl h-80 object-cover"
