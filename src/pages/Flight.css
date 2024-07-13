@@ -1,0 +1,17 @@
+.searchFlightDiv{
+    box-shadow: 0px 0px 200px #88888840;
+    border-radius: 0.5rem;
+    margin: 3% auto;
+    padding: 4% 3%;
+    text-align: center;
+    .radioDiv{
+        label{
+            display: inline-flex;
+            margin-left: 2%;
+            font-size: small;
+            input{
+                margin-right: 5px;
+            }
+        }
+    }
+}

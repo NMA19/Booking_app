@@ -1,0 +1,46 @@
+form{
+    margin-top: 5%;
+    .row{
+        margin-bottom: 2%;
+        display: grid;
+        gap: 2%;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));;
+        label{
+            display: flex;
+            align-items: center;
+            gap: 5%;
+            padding: 4% 0 4% 5%;
+            border: 1px solid #cacaca;
+            border-radius: 0.5rem;
+        }
+        label:focus-within {
+            border: 2px solid #345bc6;
+        }
+        .input {
+            outline: none;
+            border: none;
+            color: #1e3a8a;
+        }
+        .dateDiv{
+            display: flex;
+            justify-content: right;
+            label{
+                /* width: 80%; */
+            }
+            div{
+                /* width: 20%; */
+                /* display: flex; */
+                .closeIcon{
+                    width: 50%;
+                    height: auto;
+                    cursor: pointer;
+                }
+            }
+
+        }
+    }
+}
+
+.input::placeholder {
+color: #1e3a8a; /* Replace with your desired color */
+}

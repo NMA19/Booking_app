@@ -23,7 +23,7 @@ const Items = () => {
                     className={`headerItem p-3 ${currentPath === '/flight' ? 'active' : ''}`} 
                     to="/flight"
                 >
-                    <div style={{ marginLeft: '30px' }}>
+                    <div className="headerItem">
                         <FontAwesomeIcon icon={faPlane} />
                         <span style={{ marginLeft: '10px' }}>Flight</span>
                     </div>
@@ -32,7 +32,7 @@ const Items = () => {
                     className={`headerItem p-3 ${currentPath === '/car' ? 'active' : ''}`} 
                     to="/car"
                 >
-                    <div style={{ marginLeft: '30px' }}>
+                    <div className="headerItem">
                         <FontAwesomeIcon icon={faCar} />
                         <span style={{ marginLeft: '10px' }}>Car rental</span>
                     </div>
@@ -41,7 +41,7 @@ const Items = () => {
                     className={`headerItem p-3 ${currentPath === '/attraction' ? 'active' : ''}`} 
                     to="/attraction"
                 >
-                    <div style={{ marginLeft: '30px' }}>
+                    <div className="headerItem">
                         <FontAwesomeIcon icon={faBed} />
                         <span style={{ marginLeft: '10px' }}>Attractions</span>
                     </div>
@@ -50,7 +50,7 @@ const Items = () => {
                     className={`headerItem p-3 ${currentPath === '/taxi' ? 'active' : ''}`} 
                     to="/taxi"
                 >
-                    <div style={{ marginLeft: '30px' }}>
+                    <div className="headerItem">
                         <FontAwesomeIcon icon={faTaxi} />
                         <span style={{ marginLeft: '10px' }}>Airport taxi</span>
                     </div>
