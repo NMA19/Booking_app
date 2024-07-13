@@ -9,9 +9,7 @@ const Car = () => {
       </h1>
       <ButtonUsage />
       <List/>
-
     </div>
     )
   }
-
   export default Car;

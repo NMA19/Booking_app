@@ -1,10 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import  { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faCalendarDays, faUser, faClose } from "@fortawesome/free-solid-svg-icons";
 import { Calendar } from 'react-date-range';
 import { format } from 'date-fns';
 import './searchMenu.css'
-import ButtonUse from '../ui/Button'
 
 const MultiDestination = () => {
     const [focusedInput, setFocusedInput] = useState(null);
@@ -14,17 +13,14 @@ const MultiDestination = () => {
     
       // ------------------------------------ Date --------------------------------------------
       const [openDate, setOpenDate] = useState(false);  
-      const [dateSelected, setDateSelected] = useState(false);
-      const [date, setDate] = useState(new Date());
+      
       // const handleDateChange = (date) => {
       //   setDate(date);
       //   setDateSelected(true);
       // };
     
           // Affichage de date
-      const displayText = dateSelected 
-        ? `${format(date, "MM/dd/yyyy")}`
-        : "Departing";
+   
     
           // Hide calendar when you click elsewhere
       const dateRangeRef = useRef(null);

@@ -6,24 +6,14 @@ import { DateRange } from 'react-date-range';
 import { useState } from "react";
 import { format } from 'date-fns';
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-const SearchBar = () => {
-  const [destination, setDestination] = useState("");  
+const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
+  const [destination, setDestination] = useState(initialDestination);  
   const [openDate, setOpenDate] = useState(false);  
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: 'selection'
-    }
-  ]);
+  const [date, setDate] = useState(initialDate);
   const [openOptions, setOpenOptions] = useState(false); 
-  const [options, setOptions] = useState({
-    adult: 1,
-    children: 0,
-    room: 1
-  });
-  const navigate = useNavigate();
+  const [options, setOptions] = useState(initialOptions);
 
   const handleOption = (name, operation) => {
     setOptions((prev) => ({
@@ -32,8 +22,9 @@ const SearchBar = () => {
     }));
   };
 
+  const navigate = useNavigate();
   const handleSearch = () => {
-    navigate("/list", { state: { destination, date, options } });
+    navigate("/search", { state: { destination, date, options } });
   };
 
   return (
@@ -44,6 +35,7 @@ const SearchBar = () => {
           style={{ marginLeft: '10px' }} 
           type="text" 
           placeholder="Where are you going?" 
+          value={destination}
           onChange={(e) => setDestination(e.target.value)}
         />
       </div>
@@ -66,7 +58,7 @@ const SearchBar = () => {
       <div className="m-2">
         <FontAwesomeIcon icon={faPerson} />
         <span onClick={() => setOpenOptions(!openOptions)} style={{ marginLeft: '10px' }}>
-          {`${options.adult} adult . ${options.children} children . ${options.room} room`}
+          {`${options.adult} adult . ${options.children} children . ${options.room} rooms`}
         </span>
         {openOptions && (
           <div className="absolute bg-sky-900 text-cyan-50 rounded-xl inline-block top-14 border-yellow-400 border-4 left-[62%] w-72 h-48">
@@ -125,14 +117,36 @@ const SearchBar = () => {
         )}
       </div>
       <button
+        onClick={handleSearch}
         className="middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         data-ripple-light="true"
-        onClick={handleSearch}
       >
         Search
       </button>
     </div>
   );
-}
+};
+
+SearchBar.propTypes = {
+  initialDestination: PropTypes.string,
+  initialDate: PropTypes.arrayOf(
+    PropTypes.shape({
+      startDate: PropTypes.instanceOf(Date),
+      endDate: PropTypes.instanceOf(Date),
+      key: PropTypes.string
+    })
+  ),
+  initialOptions: PropTypes.shape({
+    adult: PropTypes.number,
+    children: PropTypes.number,
+    room: PropTypes.number
+  })
+};
+
+SearchBar.defaultProps = {
+  initialDestination: "",
+  initialDate: [{ startDate: new Date(), endDate: new Date(), key: 'selection' }],
+  initialOptions: { adult: 1, children: 0, room: 1 }
+};
 
 export default SearchBar;
