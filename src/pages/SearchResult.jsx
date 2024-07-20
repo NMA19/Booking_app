@@ -27,7 +27,7 @@ const hotels = [
     location: "Paris",
     description: "A wonderful place to enjoy your vacation with family and friends.",
     price: 3000,
-    stars: 5
+    stars: 4
   },
   // Add more hotel objects as needed
 ];
