@@ -139,10 +139,12 @@ const Airport = () => {
           </li>
         </ul>
       </div>
-      <div className="bg-[#F5F5F5] p-10 top-7">
+      <div className="bg-[#F5F5F5] p-10 mt-7">
         <h2 className="font-bold text-center text-3xl">Airport taxis for any kind of trip</h2>
-        <ButtonGroup onFilterChange={handleFilterChange} />
-        <div className="flex gap-5">
+        <div className="mt-8 ml-4 ">
+          <ButtonGroup onFilterChange={handleFilterChange} />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
           {filteredTaxiOptions.map((option, index) => (
             <TaxiCard
               key={index}
