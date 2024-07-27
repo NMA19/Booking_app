@@ -1,15 +1,15 @@
 import List from "../components/ui/List";
 import ButtonUsage from "../components/ui/Button";
-import SearchBar from "../components/ui/searchbar"; // Ensure the correct path is used
-import { useLocation } from 'react-router-dom';
+import SearchBar from "../components/ui/searchbar";
 import Items from "../components/Hotelitem/Item";
+import { useLocation } from 'react-router-dom';
 
 const hotels = [
   {
     imageUrls: [
       "/imag/The Manhattan At Times Square 4 star New York.jpeg",
-      "https://images.unsplash.com/photo-1553747531-e77e33d28628?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80",
-      "https://images.unsplash.com/photo-1521335629791-ce4aec67dd62?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
+      "https://images.unsplash.com/photo-1553747531-e77e33d28628?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      "https://images.unsplash.com/photo-1521335629791-ce4aec67dd62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
     ],
     hotelName: "Manhattan",
     location: "New York",
@@ -20,8 +20,8 @@ const hotels = [
   {
     imageUrls: [
       "/imag/Home - Hôtel États-Unis Opéra.jpeg",
-      "https://images.unsplash.com/photo-1560264418-6c9a49de3a56?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80",
-      "https://images.unsplash.com/photo-1534126511673-b6899657816a?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
+      "https://images.unsplash.com/photo-1560264418-6c9a49de3a56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      "https://images.unsplash.com/photo-1534126511673-b6899657816a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
     ],
     hotelName: "États-Unis Opéra",
     location: "Paris",
@@ -32,17 +32,15 @@ const hotels = [
   // Add more hotel objects as needed
 ];
 
-
-const Result = () => {  
+const Result = () => {
   const location = useLocation();
   const { destination, date, options } = location.state || {};
 
- 
   return (
     <section>
-      <div className="bg-[#1e3a8a] p-1 h-[250px]">
+      <div className="bg-red-900 p-1 h-[250px]">
         <h1 className="m-4 relative left-20 text-white font-bold">
-          BroBooking-app
+          TravelEase
         </h1>
         <ButtonUsage />
         <List />
@@ -52,20 +50,21 @@ const Result = () => {
         initialDate={date}
         initialOptions={options}
       />
-      <div className="flex justify-center">
-        <div>List menu</div> 
-        <div className="flex flex-wrap justify-center gap-6">
-          {hotels.map((hotel, index) => (
-            <Items
-              key={index}
-              imageUrls={hotel.imageUrls}
-              hotelName={hotel.hotelName}
-              location={hotel.location}
-              description={hotel.description}
-              price={hotel.price}
-              stars={hotel.stars}
-            />
-          ))}
+      <div className="flex justify-center py-6">
+        <div className="w-full max-w-6xl">
+          <div className="flex flex-wrap justify-center gap-6">
+            {hotels.map((hotel, index) => (
+              <Items
+                key={index}
+                imageUrls={hotel.imageUrls}
+                hotelName={hotel.hotelName}
+                location={hotel.location}
+                description={hotel.description}
+                price={hotel.price}
+                stars={hotel.stars}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

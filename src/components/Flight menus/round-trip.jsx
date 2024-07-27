@@ -89,7 +89,7 @@ const RoundTrip = () => {
     <form>
           <div className='row'>
             <label className={`${focusedInput === 'departure' ? 'focus-within' : ''}`}>
-              <FontAwesomeIcon icon={faSearch} style={{color: '#345bc6'}}/>
+              <FontAwesomeIcon icon={faSearch} style={{color: '#f97316'}}/>
               <input
                 type="text"
                 className="input"
@@ -99,7 +99,7 @@ const RoundTrip = () => {
               />
             </label>
             <label className={`${focusedInput === 'destination' ? 'focus-within' : ''}`}>
-              <FontAwesomeIcon icon={faSearch} style={{color: '#345bc6'}}/>
+              <FontAwesomeIcon icon={faSearch} style={{color: '#f97316'}}/>
               <input
                 type="text"
                 className="input"
@@ -111,14 +111,14 @@ const RoundTrip = () => {
           </div>
           <div className='row'>
             <label>
-              <FontAwesomeIcon icon={faCalendarDays} style={{color: '#345bc6'}}/>
-              <span onClick={() => setOpenDate(!openDate)} style={{color: "#1e3a8a"}}>
+              <FontAwesomeIcon icon={faCalendarDays} style={{color: '#f97316'}}/>
+              <span onClick={() => setOpenDate(!openDate)} style={{color: "#7f1d1d"}}>
                 {displayText}
               </span>
               {openDate && (
                 <div className= "absolute top-[88%]" ref={dateRangeRef} onBlur={handleBlur} tabIndex="0">
                   <DateRange
-                    className="absolute rounded-xl border-[#345bc6] border-2"
+                    className="absolute rounded-xl border-red-900 border-2"
                     editableDateInputs={true}
                     onChange={handleDateChange}
                     moveRangeOnFirstSelection={false}
@@ -129,17 +129,17 @@ const RoundTrip = () => {
               )}
             </label>
             <label>
-              <FontAwesomeIcon icon={faUser} style={{color: '#345bc6'}}/>
+              <FontAwesomeIcon icon={faUser} style={{color: '#f97316'}}/>
               <span onClick={() => setOpenOptions(!openOptions)}>
                 {displayOptions}
               </span>
               {openOptions && (
-                <div className="absolute top-[87%] bg-white rounded-xl inline-block border-[#345bc6] border-2 w-72 h-[25%]"  ref={optionRef}>
+                <div className="absolute top-[87%] bg-white rounded-xl inline-block border-red-900 border-2 w-72 h-[25%]"  ref={optionRef}>
                   <div className="items">
                     <span className="absolute top-[17%] left-6">Adult</span>
                     <button
                       type="button"
-                      className="absolute left-[37%] top-4 text-[#345bc6] bg-white w-10 h-10 rounded-md border-[#345bc6] border-2 disabled:cursor-not-allowed"
+                      className="absolute left-[37%] top-4 text-red-900 bg-white w-10 h-10 rounded-md border-red-900 border-2 disabled:cursor-not-allowed"
                       onClick={() => handleOption("adult", "d")}
                       disabled={options.adult <= 1}
                     >
@@ -148,7 +148,7 @@ const RoundTrip = () => {
                     <span className="absolute left-[58%] top-[17%]">{options.adult}</span>
                     <button
                       type="button"
-                      className="absolute left-[70%] top-4 text-[#345bc6] bg-white w-10 h-10 rounded-md border-[#345bc6] border-2"
+                      className="absolute left-[70%] top-4 text-red-900 bg-white w-10 h-10 rounded-md border-red-900 border-2"
                       onClick={() => handleOption("adult", "i")}
                     >
                       +
@@ -158,7 +158,7 @@ const RoundTrip = () => {
                     <span className="absolute top-[60%] left-6">Children</span>
                     <button
                       type="button"
-                      className="absolute left-[37%] top-[55%] text-[#345bc6] bg-white w-10 h-10 rounded-md border-[#345bc6] border-2 disabled:cursor-not-allowed"
+                      className="absolute left-[37%] top-[55%] text-red-900 bg-white w-10 h-10 rounded-md border-red-900 border-2 disabled:cursor-not-allowed"
                       onClick={() => handleOption("children", "d")}
                       disabled={options.children <= 0}
                     >
@@ -167,7 +167,7 @@ const RoundTrip = () => {
                     <span className="absolute left-[58%] top-[60%]">{options.children}</span>
                     <button
                       type="button"
-                      className="absolute top-[55%] left-[70%] text-[#345bc6] bg-white w-10 h-10 rounded-md border-[#345bc6] border-2"
+                      className="absolute top-[55%] left-[70%] text-red-900 bg-white w-10 h-10 rounded-md border-red-900 border-2"
                       onClick={() => handleOption("children", "i")}
                     >
                       +

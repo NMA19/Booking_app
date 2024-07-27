@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBed, faCar, faPlane, faTaxi } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
+import AttractionsRoundedIcon from '@mui/icons-material/AttractionsRounded';
 import './List.css';
 
 const Items = () => {
@@ -42,7 +43,7 @@ const Items = () => {
                     to="/attraction"
                 >
                     <div className="headerItem">
-                        <FontAwesomeIcon icon={faBed} />
+                        <AttractionsRoundedIcon  />
                         <span style={{ marginLeft: '10px' }}>Attractions</span>
                     </div>
                 </Link>

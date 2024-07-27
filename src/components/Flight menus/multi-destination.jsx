@@ -12,15 +12,7 @@ const MultiDestination = () => {
       };
     
       // ------------------------------------ Date --------------------------------------------
-      const [openDate, setOpenDate] = useState(false);  
-      
-      // const handleDateChange = (date) => {
-      //   setDate(date);
-      //   setDateSelected(true);
-      // };
-    
-          // Affichage de date
-   
+      const [openDate, setOpenDate] = useState(false);    
     
           // Hide calendar when you click elsewhere
       const dateRangeRef = useRef(null);
@@ -108,7 +100,7 @@ const MultiDestination = () => {
           {flights.map((flight, index) => (
                 <div className='row' key={index}>
                     <label className={`${focusedInput === `departure-${index}` ? 'focus-within' : ''}`}>
-                        <FontAwesomeIcon icon={faSearch} style={{color: '#345bc6'}}/>
+                        <FontAwesomeIcon icon={faSearch} style={{color: '#f97316'}}/>
                         <input
                             type="text"
                             className="input"
@@ -120,7 +112,7 @@ const MultiDestination = () => {
                         />
                     </label>
                     <label className={`${focusedInput === `destination-${index}` ? 'focus-within' : ''}`}>
-                        <FontAwesomeIcon icon={faSearch} style={{color: '#345bc6'}}/>
+                        <FontAwesomeIcon icon={faSearch} style={{color: '#f97316'}}/>
                         <input
                             type="text"
                             className="input"
@@ -134,14 +126,14 @@ const MultiDestination = () => {
                     {index > 0
                         ?<div className='dateDiv'>
                           <label className='w-4/5'>
-                            <FontAwesomeIcon icon={faCalendarDays} style={{color: '#345bc6'}}/>
+                            <FontAwesomeIcon icon={faCalendarDays} style={{color: '#f97316'}}/>
                             <span onClick={() => setOpenDate(index)} style={{color: "#1e3a8a"}}>
                                 {format(flight.date, "MM/dd/yyyy")}
                             </span>
                             {openDate === index && (
                                 <div className=" " ref={dateRangeRef} onBlur={handleBlur} tabIndex="0">
                                     <Calendar 
-                                        className="absolute rounded-xl border-[#345bc6] border-2"
+                                        className="absolute rounded-xl border-red-900 border-2"
                                         onChange={(date) => handleDateChange(index, date)}
                                         minDate={new Date()}
                                     />
@@ -153,14 +145,14 @@ const MultiDestination = () => {
                           </div>
                         </div>
                         :<label>
-                          <FontAwesomeIcon icon={faCalendarDays} style={{color: '#345bc6'}}/>
-                          <span onClick={() => setOpenDate(index)} style={{color: "#1e3a8a"}}>
+                          <FontAwesomeIcon icon={faCalendarDays} style={{color: '#f97316'}}/>
+                          <span onClick={() => setOpenDate(index)} style={{color: "#7f1d1d"}}>
                               {format(flight.date, "MM/dd/yyyy")}
                           </span>
                           {openDate === index && (
                               <div className="top-[77%]" ref={dateRangeRef} onBlur={handleBlur} tabIndex="0">
                                   <Calendar 
-                                      className="absolute rounded-xl border-[#345bc6] border-2"
+                                      className="absolute rounded-xl border-red-900 border-2"
                                       onChange={(date) => handleDateChange(index, date)}
                                       minDate={new Date()}
                                   />
@@ -172,7 +164,7 @@ const MultiDestination = () => {
             ))}
             <button
                 type="button" // Change this from default 'submit' to 'button'
-                className="rounded-full bg-white mb-3 py-2 px-[3%] font-bold text-blue-500 border-solid border-2 border-blue-500 transition-all hover:border-[#1e3a8a] hover:text-[#1e3a8a] focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="rounded-full bg-white mb-3 py-2 px-[3%] font-bold text-orange-500 border-solid border-2 border-orange-500 transition-all hover:border-red-900 hover:text-red-900 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 onClick={addFlight}
             >
                 + Add another flight
@@ -180,17 +172,17 @@ const MultiDestination = () => {
             {/* <button onClick={handleClick}>+ Add another flight</button> */}
           <div className='row'>
             <label>
-              <FontAwesomeIcon icon={faUser} style={{color: '#345bc6'}}/>
+              <FontAwesomeIcon icon={faUser} style={{color: '#f97316'}}/>
               <span onClick={() => setOpenOptions(!openOptions)}>
                 {displayOptions}
               </span>
               {openOptions && (
-                <div className="absolute top-[98%] bg-white rounded-xl inline-block border-[#345bc6] border-2 w-72 h-[25%]"  ref={optionRef}>
+                <div className="absolute top-[98%] bg-white rounded-xl inline-block border-red-900 border-2 w-72 h-[25%]"  ref={optionRef}>
                   <div className="items">
                     <span className="absolute top-[17%] left-6">Adult</span>
                     <button
                       type="button"
-                      className="absolute left-[37%] top-4 text-[#345bc6] bg-white w-10 h-10 rounded-md border-[#345bc6] border-2 disabled:cursor-not-allowed"
+                      className="absolute left-[37%] top-4 text-red-900 bg-white w-10 h-10 rounded-md border-red-900 border-2 disabled:cursor-not-allowed"
                       onClick={() => handleOption("adult", "d")}
                       disabled={options.adult <= 1}
                     >
@@ -199,7 +191,7 @@ const MultiDestination = () => {
                     <span className="absolute left-[58%] top-[17%]">{options.adult}</span>
                     <button
                       type="button"
-                      className="absolute left-[70%] top-4 text-[#345bc6] bg-white w-10 h-10 rounded-md border-[#345bc6] border-2"
+                      className="absolute left-[70%] top-4 text-red-900 bg-white w-10 h-10 rounded-md border-red-900 border-2"
                       onClick={() => handleOption("adult", "i")}
                     >
                       +
@@ -209,7 +201,7 @@ const MultiDestination = () => {
                     <span className="absolute top-[60%] left-6">Children</span>
                     <button
                       type="button"
-                      className="absolute left-[37%] top-[55%] text-[#345bc6] bg-white w-10 h-10 rounded-md border-[#345bc6] border-2 disabled:cursor-not-allowed"
+                      className="absolute left-[37%] top-[55%] text-red-900 bg-white w-10 h-10 rounded-md border-red-900 border-2 disabled:cursor-not-allowed"
                       onClick={() => handleOption("children", "d")}
                       disabled={options.children <= 0}
                     >
@@ -218,7 +210,7 @@ const MultiDestination = () => {
                     <span className="absolute left-[58%] top-[60%]">{options.children}</span>
                     <button
                       type="button"
-                      className="absolute top-[55%] left-[70%] text-[#345bc6] bg-white w-10 h-10 rounded-md border-[#345bc6] border-2"
+                      className="absolute top-[55%] left-[70%] text-red-900 bg-white w-10 h-10 rounded-md border-red-900 border-2"
                       onClick={() => handleOption("children", "i")}
                     >
                       +

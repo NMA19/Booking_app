@@ -61,11 +61,11 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
           {`${options.adult} adult . ${options.children} children . ${options.room} rooms`}
         </span>
         {openOptions && (
-          <div className="absolute bg-sky-900 text-cyan-50 rounded-xl inline-block top-14 border-yellow-400 border-4 left-[62%] w-72 h-48">
+          <div className="absolute bg-white text-red-900 rounded-xl inline-block top-14 border-red-900 border-4 left-[62%] w-72 h-48">
             <div className="items">
               <span className="absolute bottom-[78%] left-6">Adult</span>
               <button
-                className="absolute left-[37%] top-3 bg-black w-10 h-10 rounded-md text-lg border-yellow-400 border-2 disabled:cursor-not-allowed"
+                className="absolute left-[37%] top-3 bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2 disabled:cursor-not-allowed"
                 onClick={() => handleOption("adult", "d")}
                 disabled={options.adult <= 1}
               >
@@ -73,7 +73,7 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
               </button>
               <span className="absolute left-[58%] bottom-[78%]">{options.adult}</span>
               <button
-                className="absolute right-[16%] top-3 bg-black w-10 h-10 rounded-md text-lg border-yellow-400 border-2"
+                className="absolute right-[16%] top-3 bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2"
                 onClick={() => handleOption("adult", "i")}
               >
                 +
@@ -82,7 +82,7 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
             <div className="items">
               <span className="absolute bottom-[46%] left-6">Children</span>
               <button
-                className="absolute left-[37%] bottom-[40%] bg-black w-10 h-10 rounded-md text-lg border-yellow-400 border-2 disabled:cursor-not-allowed"
+                className="absolute left-[37%] bottom-[40%] bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2 disabled:cursor-not-allowed"
                 onClick={() => handleOption("children", "d")}
                 disabled={options.children <= 0}
               >
@@ -90,7 +90,7 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
               </button>
               <span className="absolute left-[58%] bottom-[46%]">{options.children}</span>
               <button
-                className="absolute bottom-[40%] left-[70%] bg-black w-10 h-10 rounded-md text-lg border-yellow-400 border-2"
+                className="absolute bottom-[40%] left-[70%] bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2"
                 onClick={() => handleOption("children", "i")}
               >
                 +
@@ -99,7 +99,7 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
             <div className="items">
               <span className="absolute bottom-6 left-11">Room</span>
               <button
-                className="absolute left-[37%] bottom-3 bg-black w-10 h-10 rounded-md text-lg border-yellow-400 border-2 disabled:cursor-not-allowed"
+                className="absolute left-[37%] bottom-3 bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2 disabled:cursor-not-allowed"
                 onClick={() => handleOption("room", "d")}
                 disabled={options.room <= 1}
               >
@@ -107,7 +107,7 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
               </button>
               <span className="absolute left-[58%] bottom-6">{options.room}</span>
               <button
-                className="absolute bottom-3 left-[70%] bg-black w-10 h-10 rounded-md text-lg border-yellow-400 border-2"
+                className="absolute bottom-3 left-[70%] bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2"
                 onClick={() => handleOption("room", "i")}
               >
                 +
@@ -118,7 +118,7 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
       </div>
       <button
         onClick={handleSearch}
-        className="middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        className="middle none center mr-4 rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         data-ripple-light="true"
       >
         Search

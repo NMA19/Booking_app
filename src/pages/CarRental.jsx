@@ -3,9 +3,9 @@ import List from '../components/ui/List.jsx'
 
 const Car = () => {
     return (
-      <div className="bg-[#1e3a8a] p-1 h-[200px]">
+      <div className="bg-red-900 p-1 h-[200px]">
       <h1 className="m-4 relative left-20 text-white font-bold">
-        BroBooking-app
+       TravelEase
       </h1>
       <ButtonUsage />
       <List/>

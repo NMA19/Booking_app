@@ -41,13 +41,21 @@ const RoomPage = () => {
     },
   ];
 
+  const facilities={
+    options:[
+      {icon: <LocationOnIcon/>, name: "location"},
+      {icon: <LocationOnIcon/>, name: "location"},
+      {icon: <LocationOnIcon/>, name: "location"},
+    ]
+  }
+
   const stars = 5;
 
   return (
     <section>
-      <div className="bg-[#1e3a8a] p-1 h-[250px]">
+      <div className="bg-red-900 p-1 h-[250px]">
         <h1 className="m-4 relative left-20 text-white font-bold">
-          BroBooking-app
+        TravelEase
         </h1>
         <ButtonUsage />
         <List />
@@ -83,6 +91,14 @@ const RoomPage = () => {
           <div>
             <h3 className='text-2xl font-bold mb-3'>Description title</h3>
             <p className='leading-relaxed'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, maxime tempora voluptatem enim beatae fugit adipisci aspernatur iure iusto ratione eaque quis. Omnis voluptatum nisi dolorum vel commodi corporis labore dolore molestiae doloribus vitae! Iste enim nisi nemo in, cupiditate quisquam dignissimos corporis! Veniam nesciunt quibusdam minima hic cumque quis, id beatae blanditiis veritatis eius quasi cum, iste rerum recusandae tempora tenetur dolore dolorem quisquam atque nam aperiam officia? Adipisci beatae natus, minus quos, amet consectetur distinctio soluta eum veritatis animi voluptatem repudiandae obcaecati provident inventore odit dolor. Dolore, ipsam libero ea beatae dicta vero architecto hic molestias dolores itaque?</p>
+            <div className='flex items-center'>
+              {facilities.options.map((item, index) => (
+                <div key={index} className='flex items-center mr-4'>
+                  {item.icon}
+                  <span className='ml-2'>{item.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
           <div className='py-5 px-8 bg-blue-50 rounded-lg leading-loose'>
             <h3 className='text-lg font-bold'>Description title</h3>
@@ -96,8 +112,8 @@ const RoomPage = () => {
             <p className='infoSpan'>Terrace</p>
             <h3 className='text-base font-bold'>Activities:</h3>
             <p className='infoSpan'>Fitness centre</p>
-            <p className='infoSpan'>Fitness centre</p>
-            <p className='infoSpan'>Fitness centre</p>
+            <p className='infoSpan'>Spa and wellness centre</p>
+            <p className='infoSpan'>Hot tub/Jacuzzi</p>
             <button 
               className="rounded bg-blue-500 mt-3 py-1 w-full font-bold text-white shadow-md transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
                 Reserve
@@ -162,26 +178,30 @@ const RoomPage = () => {
         </div>
         <div>
           <h1 className="text-3xl font-bold my-5">Guest reviews</h1>
-          <div className='grid grid-cols-4 gap-y-5'>
+          <div className='grid grid-cols-3 gap-y-5'>
+            <div className='m-auto'>
+              <p className='font-bold mx-auto text-center mb-2'>Staff</p>
+              <Circle value={8.2}/>
+            </div>
             <div className='m-auto'>
               <p className='font-bold mx-auto text-center mb-2'>Staff</p>
               <Circle value={8.2}/>
             </div>
             <div className='m-auto'>
               <p className='font-bold mx-auto text-center mb-2'>Cleanliness</p>
-              <Circle value={8.2}/>
+              <Circle value={5}/>
             </div>
             <div className='m-auto'>
               <p className='font-bold mx-auto text-center mb-2'>Comfort</p>
-              <Circle value={8.2}/>
+              <Circle value={2}/>
             </div>
             <div className='m-auto'>
               <p className='font-bold mx-auto text-center mb-2'>Value for money</p>
-              <Circle value={8.2}/>
+              <Circle value={9.5}/>
             </div>
             <div className='m-auto'>
               <p className='font-bold mx-auto text-center mb-2'>Location</p>
-              <Circle value={8.2}/>
+              <Circle value={9.5}/>
             </div>
           </div>
         </div>

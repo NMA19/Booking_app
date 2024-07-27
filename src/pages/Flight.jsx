@@ -22,15 +22,15 @@ const Flight = () => {
 
   return (
     <div>
-      <div className="bg-[#1e3a8a] p-1 h-[200px]">
+      <div className="bg-red-900 p-1 h-[200px]">
         <h1 className="m-4 relative left-20 text-white font-bold">
-          BroBooking-app
+        TravelEase
         </h1>
         <ButtonUsage />
         <List/>
       </div>
       <div className="searchFlightDiv w-3/5">
-        <h1 className="text-3xl font-bold mb-3 text-[#345bc6]">Find your next flight deal</h1>
+        <h1 className="text-3xl font-bold mb-3 text-red-900">Find your next flight deal</h1>
         <div className="radioDiv">
           <label>
             <input 
@@ -64,7 +64,7 @@ const Flight = () => {
         {tripType === "One-way" && <OneWay />}
         {tripType === "Multi-destination" && <MultiDestination />}
         <button
-          className="rounded-lg bg-blue-500 mt-2 py-3 px-[10%] font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="rounded-lg bg-orange-500 mt-2 py-3 px-[10%] font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           // data-ripple-light="true"
           onClick={handleSearch}
         >

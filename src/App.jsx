@@ -10,6 +10,7 @@ import Flight from './pages/Flight.jsx';
 import Result from './pages/SearchResult.jsx';
 import RoomPage from './pages/RoomPage.jsx'; 
 import RoomDetail from './pages/RoomDetail';
+import Place from './pages/palce.jsx'
 // import List from './pages/List.jsx';
 
 // import Result from './pages/SearchResult';
@@ -34,7 +35,7 @@ return (
             <Route path='/room/:hotelName' element={<RoomPage />} /> {/* Dynamic route for room pages */}
             <Route path="/room/:roomId" element={<RoomDetail />} />
             <Route path="/roomPage" element={<RoomPage />} />
-
+            <Route path="/place" element={<Place />} />
         </Routes>
     </BrowserRouter>
 

@@ -10,6 +10,15 @@ function Login() {
         <div className="w-full mx-auto px-20 flex-col items-center space-y-6">
           <h1 className="text-white font-bold text-4xl font-sans">BroBooking App</h1>
           <p className="text-white mt-1">The simplest app to use</p>
+          <div
+        className="w-1/2 bg-cover md:block hidden"
+        style={{
+          background: "linear-gradient(rgba(2, 2, 2, 0.7), rgba(0, 0, 0, 0.7)), url('./imag/im.jpg') center center",
+          backgroundSize: 'cover',
+        }}
+      ></div>
+    
+
           <div className="flex justify-center lg:justify-start mt-6">
             <a
               href="#"

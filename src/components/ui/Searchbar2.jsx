@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBed, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';  // Import useNavigate
-
+import AttractionsRoundedIcon from '@mui/icons-material/AttractionsRounded';
 const Search = ({ initialDestination, initialDate, initialOptions }) => {
   const [destination, setDestination] = useState(initialDestination);
   const [date, setDate] = useState(initialDate);
@@ -25,7 +25,7 @@ const Search = ({ initialDestination, initialDate, initialOptions }) => {
   return (
     <div className="search inline-flex gap-10 p-2 px-14 relative left-32 bottom-5 border-solid bg-white border-2 border-yellow-500 text-gray-400 rounded-lg">
       <div className="m-2 flex items-center gap-2">
-        <FontAwesomeIcon icon={faBed} />
+      <AttractionsRoundedIcon/>
         <input
           style={{ marginLeft: '10px' }}
           type="text"
@@ -56,7 +56,7 @@ const Search = ({ initialDestination, initialDate, initialOptions }) => {
       </div>
       <button
         onClick={handleSearch}
-        className="middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        className="middle none center mr-4 rounded-lg bg-orange-500 shadow-orange-500/20 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         data-ripple-light="true"
       >
         Search

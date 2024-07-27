@@ -14,22 +14,17 @@ form{
             border-radius: 0.5rem;
         }
         label:focus-within {
-            border: 2px solid #345bc6;
+            border: 2px solid #7f1d1d;
         }
         .input {
             outline: none;
             border: none;
-            color: #1e3a8a;
+            color: #7f1d1d;
         }
         .dateDiv{
             display: flex;
             justify-content: right;
-            label{
-                /* width: 80%; */
-            }
             div{
-                /* width: 20%; */
-                /* display: flex; */
                 .closeIcon{
                     width: 50%;
                     height: auto;
@@ -42,5 +37,5 @@ form{
 }
 
 .input::placeholder {
-color: #1e3a8a; /* Replace with your desired color */
+color: #7f1d1d; /* Replace with your desired color */
 }
