@@ -3,6 +3,8 @@ import ButtonUsage from "../components/ui/Button";
 import SearchBar from "../components/ui/searchbar";
 import Items from "../components/Hotelitem/Item";
 import { useLocation } from 'react-router-dom';
+import Map from "../components/Map";
+import  { useEffect, useState } from 'react';
 
 const hotels = [
   {
@@ -15,7 +17,9 @@ const hotels = [
     location: "New York",
     description: "Like so many organizations these days, Autodesk is a company in",
     price: 2190,
-    stars: 4
+    stars: 4,
+    latitude: 40.7590,
+    longitude: -73.9845,
   },
   {
     imageUrls: [
@@ -27,14 +31,38 @@ const hotels = [
     location: "Paris",
     description: "A wonderful place to enjoy your vacation with family and friends.",
     price: 3000,
-    stars: 4
+    stars: 4,
+    latitude: 48.8718,
+    longitude: 2.3318,
   },
   // Add more hotel objects as needed
 ];
 
+const fetchCoordinates = async (address) => {
+  const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${address}`);
+  const data = await response.json();
+  if (data.length > 0) {
+    return {
+      lat: parseFloat(data[0].lat),
+      lng: parseFloat(data[0].lon),
+    };
+  }
+  return null;
+};
+
 const Result = () => {
   const location = useLocation();
   const { destination, date, options } = location.state || {};
+  const [coordinates, setCoordinates] = useState(null);
+  const sampleHotel = hotels[0]; // For demonstration purposes, using the first hotel.
+
+  useEffect(() => {
+    const getCoordinates = async () => {
+      const coords = await fetchCoordinates(sampleHotel.location);
+      setCoordinates(coords);
+    };
+    getCoordinates();
+  }, [sampleHotel.location]);
 
   return (
     <section>
@@ -50,9 +78,12 @@ const Result = () => {
         initialDate={date}
         initialOptions={options}
       />
-      <div className="flex justify-center py-6">
-        <div className="w-full max-w-6xl">
-          <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex justify-center gap-5 py-6">
+        <div className="flex w-full max-w-6xl">
+          <div className="w-1/3">
+            {coordinates && <Map lat={coordinates.lat} lng={coordinates.lng} />}
+          </div>
+          <div className="w-[90%] px-0 flex flex-col gap-6">
             {hotels.map((hotel, index) => (
               <Items
                 key={index}
