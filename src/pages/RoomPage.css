@@ -1,50 +1,64 @@
-.photo-album {
-    max-width: 80%;
-    margin: 0 auto;
-  }
-  
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 200px;
-    gap: 10px;
-  }
-  
-  .photo-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-  /* Specific layout for the first row */
-  .photo-grid > :nth-child(1) {
-    grid-row: 1;
-    grid-column: 1;
-  }
-  .photo-grid > :nth-child(2) {
-    grid-row: 1 / 3;
-    grid-column: 2 / 4;
-  }
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 180px;
+  gap: 10px;
+}
 
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
-  .availabilityDiv{
-    max-width: 80%;
-    margin: 2% auto;
-  }
-  .custom-table {
-    width: 100%;
-  }
-  .custom-table th,
-  .custom-table td {
-    border: 1px solid #dddddd;
-    padding: 12px;
-    text-align: left;
-    /* border-bottom: 1px solid #ddd; */
-  }
-  .custom-table th {
-    background-color: #1e3a8a;
-    color: white;
-  }
-  .custom-table tr:nth-child(even) {
-    background-color: #f6f6f6;
-  }
+/* Specific layout for the first row */
+.photo-grid > :nth-child(1) {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.photo-grid > :nth-child(2) {
+  grid-row: 1 / 3;
+  grid-column: 2 / 4;
+}
+
+/* _______________________________ Description _______________________________ */
+.descDiv{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.descDiv > :nth-child(1) {
+  grid-column: 1/3;
+}
+.infoSpan{
+  font-size: 0.875rem;
+}
+
+/* _______________________________ Table _____________________________________ */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #dddddd; /* Updated border color */
+  padding: 12px;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #1e3a8a;
+  color: white;
+}
+.custom-table th:nth-child(even) {
+  background-color: #3050a9;
+  /* color: white; */
+}
+
+.custom-table tr:nth-child(even) {
+  background-color: #f6f6f6;
+}

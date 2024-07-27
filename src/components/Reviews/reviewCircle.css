@@ -1,0 +1,30 @@
+
+  
+  .progressDiv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10pt;
+    width: 50%;
+  }
+  
+  .progTxt {
+    padding-left: 5%;
+    line-height: 70%;
+  }
+  
+  /* Progress circle styles */
+  .progress-circle__bg {
+    fill: none;
+    stroke: #eee;
+  }
+  .progress-circle__progress {
+    fill: none;
+    stroke: #3050a9; /* Updated stroke color */
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.35s;
+  }
+  .progress-circle__text {
+    font-size: 1.5rem;
+    fill: #3050a9; /* Updated text color */
+  }
