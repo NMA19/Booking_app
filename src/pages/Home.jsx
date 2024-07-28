@@ -16,11 +16,11 @@ const Home = () =>{
         <ButtonUsage />
         <Items />
         <h4 className="m-4 relative left-20 top-36 text-white font-bold text-4xl">
-          A Lifetime of discounts? it`s Genius.{" "}
+          A Lifetime of discounts? it`s Genius.
         </h4>
         <h1 className="m-4 relative left-20 top-36 text-white ">
           Get rewarded for your travels-unlock instant saving of 10% or more
-          with a free <span className="font-bold">brobooking-app</span> account.
+          with a free <b>TravelEase </b> account.
         </h1>
         <Link to={"/register"}>
           <Button className="m-3 absolute left-24 top-36"  variant="contained" sx={{backgroundColor: 'darkorange', '&:hover': {backgroundColor: 'darkred'}}}>

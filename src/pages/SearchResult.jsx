@@ -4,7 +4,7 @@ import SearchBar from "../components/ui/searchbar";
 import Items from "../components/Hotelitem/Item";
 import { useLocation } from 'react-router-dom';
 import Map from "../components/Map";
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const hotels = [
   {
@@ -78,24 +78,22 @@ const Result = () => {
         initialDate={date}
         initialOptions={options}
       />
-      <div className="flex justify-center gap-5 py-6">
-        <div className="flex w-full max-w-6xl">
-          <div className="w-1/3">
-            {coordinates && <Map lat={coordinates.lat} lng={coordinates.lng} />}
-          </div>
-          <div className="w-[90%] px-0 flex flex-col gap-6">
-            {hotels.map((hotel, index) => (
-              <Items
-                key={index}
-                imageUrls={hotel.imageUrls}
-                hotelName={hotel.hotelName}
-                location={hotel.location}
-                description={hotel.description}
-                price={hotel.price}
-                stars={hotel.stars}
-              />
-            ))}
-          </div>
+      <div className="flex flex-col md:flex-row justify-center gap-5 py-6 px-10">
+        <div className="w-full md:w-1/3">
+          {coordinates && <Map lat={coordinates.lat} lng={coordinates.lng} />}
+        </div>
+        <div className="w-full md:w-2/3  flex flex-col gap-5">
+          {hotels.map((hotel, index) => (
+            <Items
+              key={index}
+              imageUrls={hotel.imageUrls}
+              hotelName={hotel.hotelName}
+              location={hotel.location}
+              description={hotel.description}
+              price={hotel.price}
+              stars={hotel.stars}
+            />
+          ))}
         </div>
       </div>
     </section>

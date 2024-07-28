@@ -67,6 +67,7 @@ const Att = () => {
                         />
                     </div>
                 </div>
+                <h1 className="relative top-12">We've got you covered</h1>
             </div>
         </div>
     );
