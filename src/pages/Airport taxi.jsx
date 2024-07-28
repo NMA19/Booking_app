@@ -9,6 +9,7 @@ import HailIcon from '@mui/icons-material/Hail';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import ButtonGroup from "../components/ui/Buttongroup.jsx";
 import TaxiCard from "../components/ui/Taxicard.jsx";
+import Header from '../components/ui/header.jsx'
 
 const Airport = () => {
   const [filter, setFilter] = useState('all');
@@ -69,11 +70,7 @@ const Airport = () => {
 
   return (
     <div className="relative">
-      <div className="bg-red-900 p-1 h-[200px]">
-        <h1 className="m-4 relative left-20 text-white font-bold">TravelEase</h1>
-        <ButtonUsage />
-        <List />
-      </div>
+      <Header/>
       <div className="relative bg-[#F5F5F5] p-8">
         <h1 className="text-3xl font-bold relative left-16">Book your airport taxi</h1>
         <h2 className="text-[#808080] relative left-16">Easy airport transfers to and from your accommodation</h2>

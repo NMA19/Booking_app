@@ -28,25 +28,25 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
   };
 
   return (
-    <div className="search inline-flex gap-10 p-2 px-14 relative left-32 bottom-5 border-solid bg-white border-2 border-yellow-500 text-gray-400 rounded-lg">
-      <div className="m-2">
+    <div className="search flex flex-col sm:flex-row gap-4 p-4 bg-white border-2 border-yellow-500 text-gray-400 rounded-lg">
+      <div className="flex items-center m-2">
         <FontAwesomeIcon icon={faBed} />
         <input 
-          style={{ marginLeft: '10px' }} 
+          className="ml-2 w-full"
           type="text" 
           placeholder="Where are you going?" 
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
         />
       </div>
-      <div className="m-2">
+      <div className="flex items-center m-2 relative">
         <FontAwesomeIcon icon={faCalendarDays} />
-        <span onClick={() => setOpenDate(!openDate)} style={{ marginLeft: '10px' }}>
+        <span className="ml-2 cursor-pointer" onClick={() => setOpenDate(!openDate)}>
           {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}
         </span>
         {openDate && (
           <DateRange
-            className="absolute left-96 top-12"
+            className="absolute z-10 mt-2"
             editableDateInputs={true}
             onChange={(item) => setDate([item.selection])}
             moveRangeOnFirstSelection={false}
@@ -55,71 +55,76 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
           />
         )}
       </div>
-      <div className="m-2">
+      <div className="flex items-center m-2 relative">
         <FontAwesomeIcon icon={faPerson} />
-        <span onClick={() => setOpenOptions(!openOptions)} style={{ marginLeft: '10px' }}>
+        <span className="ml-2 cursor-pointer" onClick={() => setOpenOptions(!openOptions)}>
           {`${options.adult} adult . ${options.children} children . ${options.room} rooms`}
         </span>
         {openOptions && (
-          <div className="absolute bg-white text-red-900 rounded-xl inline-block top-14 border-red-900 border-4 left-[62%] w-72 h-48">
-            <div className="items">
-              <span className="absolute bottom-[78%] left-6">Adult</span>
-              <button
-                className="absolute left-[37%] top-3 bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2 disabled:cursor-not-allowed"
-                onClick={() => handleOption("adult", "d")}
-                disabled={options.adult <= 1}
-              >
-                -
-              </button>
-              <span className="absolute left-[58%] bottom-[78%]">{options.adult}</span>
-              <button
-                className="absolute right-[16%] top-3 bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2"
-                onClick={() => handleOption("adult", "i")}
-              >
-                +
-              </button>
+          <div className="absolute z-10 mt-2 bg-white text-red-900 rounded-xl border-2 border-red-900 p-4 w-64">
+            <div className="flex justify-between items-center mb-2">
+              <span>Adult</span>
+              <div className="flex items-center">
+                <button
+                  className="bg-white w-8 h-8 rounded-md text-lg border-2 border-red-900 disabled:cursor-not-allowed"
+                  onClick={() => handleOption("adult", "d")}
+                  disabled={options.adult <= 1}
+                >
+                  -
+                </button>
+                <span className="mx-2">{options.adult}</span>
+                <button
+                  className="bg-white w-8 h-8 rounded-md text-lg border-2 border-red-900"
+                  onClick={() => handleOption("adult", "i")}
+                >
+                  +
+                </button>
+              </div>
             </div>
-            <div className="items">
-              <span className="absolute bottom-[46%] left-6">Children</span>
-              <button
-                className="absolute left-[37%] bottom-[40%] bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2 disabled:cursor-not-allowed"
-                onClick={() => handleOption("children", "d")}
-                disabled={options.children <= 0}
-              >
-                -
-              </button>
-              <span className="absolute left-[58%] bottom-[46%]">{options.children}</span>
-              <button
-                className="absolute bottom-[40%] left-[70%] bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2"
-                onClick={() => handleOption("children", "i")}
-              >
-                +
-              </button>
+            <div className="flex justify-between items-center mb-2">
+              <span>Children</span>
+              <div className="flex items-center">
+                <button
+                  className="bg-white w-8 h-8 rounded-md text-lg border-2 border-red-900 disabled:cursor-not-allowed"
+                  onClick={() => handleOption("children", "d")}
+                  disabled={options.children <= 0}
+                >
+                  -
+                </button>
+                <span className="mx-2">{options.children}</span>
+                <button
+                  className="bg-white w-8 h-8 rounded-md text-lg border-2 border-red-900"
+                  onClick={() => handleOption("children", "i")}
+                >
+                  +
+                </button>
+              </div>
             </div>
-            <div className="items">
-              <span className="absolute bottom-6 left-11">Room</span>
-              <button
-                className="absolute left-[37%] bottom-3 bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2 disabled:cursor-not-allowed"
-                onClick={() => handleOption("room", "d")}
-                disabled={options.room <= 1}
-              >
-                -
-              </button>
-              <span className="absolute left-[58%] bottom-6">{options.room}</span>
-              <button
-                className="absolute bottom-3 left-[70%] bg-white w-10 h-10 rounded-md text-lg border-red-900 border-2"
-                onClick={() => handleOption("room", "i")}
-              >
-                +
-              </button>
+            <div className="flex justify-between items-center">
+              <span>Room</span>
+              <div className="flex items-center">
+                <button
+                  className="bg-white w-8 h-8 rounded-md text-lg border-2 border-red-900 disabled:cursor-not-allowed"
+                  onClick={() => handleOption("room", "d")}
+                  disabled={options.room <= 1}
+                >
+                  -
+                </button>
+                <span className="mx-2">{options.room}</span>
+                <button
+                  className="bg-white w-8 h-8 rounded-md text-lg border-2 border-red-900"
+                  onClick={() => handleOption("room", "i")}
+                >
+                  +
+                </button>
+              </div>
             </div>
           </div>
         )}
       </div>
       <button
         onClick={handleSearch}
-        className="middle none center mr-4 rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-        data-ripple-light="true"
+        className="rounded-lg bg-orange-500 py-2 px-4 font-bold uppercase text-white shadow-md transition-all hover:shadow-lg focus:opacity-85 active:opacity-85 disabled:opacity-50"
       >
         Search
       </button>

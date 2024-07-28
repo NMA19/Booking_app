@@ -4,16 +4,16 @@ import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import AttractionsRoundedIcon from '@mui/icons-material/AttractionsRounded';
+
 const Search = ({ initialDestination, initialDate, initialOptions }) => {
   const [destination, setDestination] = useState(initialDestination);
   const [date, setDate] = useState(initialDate);
   const [openDate, setOpenDate] = useState(false);
-  const navigate = useNavigate();  // Use the useNavigate hook
+  const navigate = useNavigate();
 
   const handleSearch = () => {
-    // Handle search logic here
     navigate('/place', {
       state: {
         destination,
@@ -23,23 +23,22 @@ const Search = ({ initialDestination, initialDate, initialOptions }) => {
   };
 
   return (
-    <div className="search inline-flex gap-10 p-2 px-14 relative left-32 bottom-5 border-solid bg-white border-2 border-yellow-500 text-gray-400 rounded-lg">
-      <div className="m-2 flex items-center gap-2">
-      <AttractionsRoundedIcon/>
+    <div className="search flex flex-wrap gap-4 p-4 bg-white border-2 border-yellow-500 text-gray-400 rounded-lg">
+      <div className="flex-1 flex items-center gap-2">
+        <AttractionsRoundedIcon />
         <input
-          style={{ marginLeft: '10px' }}
           type="text"
           placeholder="Where are you going?"
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
-          className="outline-none"
+          className="outline-none flex-grow p-2"
         />
       </div>
-      <div className="m-2 flex items-center gap-2 relative">
+      <div className="flex-1 flex items-center gap-2 relative">
         <FontAwesomeIcon icon={faCalendarDays} />
         <span
           onClick={() => setOpenDate(!openDate)}
-          style={{ marginLeft: '10px', cursor: 'pointer' }}
+          className="cursor-pointer"
         >
           {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}
         </span>
@@ -54,13 +53,14 @@ const Search = ({ initialDestination, initialDate, initialOptions }) => {
           />
         )}
       </div>
-      <button
-        onClick={handleSearch}
-        className="middle none center mr-4 rounded-lg bg-orange-500 shadow-orange-500/20 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-        data-ripple-light="true"
-      >
-        Search
-      </button>
+      <div className="flex-1 flex justify-center">
+        <button
+          onClick={handleSearch}
+          className="rounded-lg bg-orange-500 py-3 px-6 font-bold text-white transition-all hover:shadow-lg focus:opacity-85 disabled:pointer-events-none disabled:opacity-50"
+        >
+          Search
+        </button>
+      </div>
     </div>
   );
 };

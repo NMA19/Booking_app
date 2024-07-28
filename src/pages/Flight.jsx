@@ -6,6 +6,7 @@ import './Flight.css'
 import ButtonUsage from "../components/ui/Button.jsx"
 import List from '../components/ui/List.jsx'
 import { useNavigate } from 'react-router';
+import Header from '../components/ui/header.jsx'
 
 const Flight = () => {
   const [tripType, setTripType] = useState('Round-trip');
@@ -22,13 +23,7 @@ const Flight = () => {
 
   return (
     <div>
-      <div className="bg-red-900 p-1 h-[200px]">
-        <h1 className="m-4 relative left-20 text-white font-bold">
-        TravelEase
-        </h1>
-        <ButtonUsage />
-        <List/>
-      </div>
+      <Header/>
       <div className="searchFlightDiv w-3/5">
         <h1 className="text-3xl font-bold mb-3 text-red-900">Find your next flight deal</h1>
         <div className="radioDiv">

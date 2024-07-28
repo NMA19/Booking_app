@@ -1,8 +1,0 @@
-.headerItem{
-  padding: 5px 10px;
-
-}
-.headerItem.active {
-  border: 2px solid white;
-  border-radius: 50px;
-}
