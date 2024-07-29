@@ -1,5 +1,3 @@
-import ButtonUsage from "../components/ui/Button.jsx";
-import List from '../components/ui/List.jsx';
 import Search from "../components/ui/Searchbar2.jsx";
 import Header from '../components/ui/header.jsx';
 

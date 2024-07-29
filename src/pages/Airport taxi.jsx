@@ -9,7 +9,7 @@ import HailIcon from '@mui/icons-material/Hail';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import ButtonGroup from "../components/ui/Buttongroup.jsx";
 import TaxiCard from "../components/ui/Taxicard.jsx";
-import Header from '../components/ui/header.jsx'
+import Header from '../components/ui/header.jsx';
 
 const Airport = () => {
   const [filter, setFilter] = useState('all');
@@ -71,10 +71,12 @@ const Airport = () => {
   return (
     <div className="relative">
       <Header/>
-      <div className="relative bg-[#F5F5F5] p-8">
-        <h1 className="text-3xl font-bold relative left-16">Book your airport taxi</h1>
-        <h2 className="text-[#808080] relative left-16">Easy airport transfers to and from your accommodation</h2>
-        <ul className="flex justify-center gap-10 mt-4 relative left-7 top-44 h-56">
+      <div className="bg-[#F5F5F5] p-8">
+      <div className="text-start mb-8 lg:text-4xl sm:text-sm md:text-xl lg:h-[200px]">
+          <h1 className="font-bold text-4xl">Book your airport taxi</h1>
+          <p className="text-lg text-gray-600">Easy airport transfers to and from your accommodation</p>
+        </div>
+        <ul className="flex relative  justify-center gap-10 mt-8 text-xs md:text-lg lg:text-xl">
           <li className="flex items-start gap-2">
             <FlightIcon className="bg-[#F1FEF6] rounded-full p-2" style={{ fontSize: '3rem' }} />
             <div>
@@ -104,41 +106,50 @@ const Airport = () => {
           </li>
         </ul>
       </div>
-      <div className="bg-[#FFFF] p-9 mt-10">
-        <h1 className="font-bold text-center text-4xl">Airport transfers made easy</h1>
-        <ul className="mt-4 space-y-16 p-24">
-          <li className="flex items-start gap-5">
-            <DirectionsCarIcon className="bg-[#CCE1FF] rounded-full text-blue-500 p-2" style={{ fontSize: '4rem', color:'blue' }} />
-            <div>
-              <h2 className="text-xl font-semibold">Booking your airport taxi</h2>
-              <h3 className="text-[#808080] relative top-4">
-                Confirmation is immediate. If your plans change,<br /> you can cancel for free up to 24 hours before your scheduled pick-up time.
-              </h3>
-            </div>
-          </li>
-          <li className="flex items-start gap-5">
-            <HailIcon className="bg-[#CCE1FF] rounded-full text-blue-500 p-2" style={{ fontSize: '4rem',color:'blue' }} />
-            <div>
-              <h2 className="text-xl font-semibold">Meeting your driver</h2>
-              <h3 className="text-[#808080] relative top-4">
-                You'll be met on arrival and taken to your vehicle. <br /> Your driver will track your flight, so they'll wait for you even if it's delayed.
-              </h3>
-            </div>
-          </li>
-          <li className="flex items-start gap-5">
-            <ApartmentIcon className="bg-[#CCE1FF] rounded-full p-2 text-blue-500" style={{ fontSize: '4rem', color:'blue' }} />
-            <div>
-              <h2 className="text-xl font-semibold p-2">Arriving at your destination</h2>
-              <h3 className="text-[#808080] relative top-4">
-                Get to your destination quickly and safely – <br /> no waiting in line for a taxi, no figuring out public transport.
-              </h3>
-            </div>
-          </li>
-        </ul>
+      <div className="bg-[#FFFF] p-9 mt-10 text-sm md:text-lg lg:text-xl">
+        <div className="text-center mb-8">
+          <h1 className="font-bold text-4xl">Airport transfers made easy</h1>
+        </div>
+        <div className="flex">
+          <div className="w-1/2 pr-4">
+            <ul className="space-y-16">
+              <li className="flex items-start gap-5">
+                <DirectionsCarIcon className="bg-[#CCE1FF] rounded-full text-blue-500 p-2" style={{ fontSize: '4rem' }} />
+                <div>
+                  <h2 className="text-xl font-semibold">Booking your airport taxi</h2>
+                  <h3 className="text-[#808080] relative top-2">
+                    Confirmation is immediate. If your plans change, you can cancel for free up to 24 hours before your scheduled pick-up time.
+                  </h3>
+                </div>
+              </li>
+              <li className="flex items-start gap-5">
+                <HailIcon className="bg-[#CCE1FF] rounded-full text-blue-500 p-2" style={{ fontSize: '4rem' }} />
+                <div>
+                  <h2 className="text-xl font-semibold">Meeting your driver</h2>
+                  <h3 className="text-[#808080] relative top-2">
+                    You'll be met on arrival and taken to your vehicle. Your driver will track your flight, so they'll wait for you even if it's delayed.
+                  </h3>
+                </div>
+              </li>
+              <li className="flex items-start gap-5">
+                <ApartmentIcon className="bg-[#CCE1FF] rounded-full text-blue-500 p-2" style={{ fontSize: '4rem' }} />
+                <div>
+                  <h2 className="text-xl font-semibold">Arriving at your destination</h2>
+                  <h3 className="text-[#808080] relative top-2">
+                    Get to your destination quickly and safely – no waiting in line for a taxi, no figuring out public transport.
+                  </h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className="w-1/2 pl-4">
+            {/* You can add additional content here if needed */}
+          </div>
+        </div>
       </div>
       <div className="bg-[#F5F5F5] p-10 mt-7">
         <h2 className="font-bold text-center text-3xl">Airport taxis for any kind of trip</h2>
-        <div className="mt-8 ml-4 ">
+        <div className="mt-8 ml-4">
           <ButtonGroup onFilterChange={handleFilterChange} />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
