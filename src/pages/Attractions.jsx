@@ -16,18 +16,18 @@ const Att = () => {
   ];
 
   const secondDestinations = [
-    { src: "./public/imag/anglesey br.jpg", region: "1" }, // Europe
-    { src: "./public/imag/Helsinki.jpg", region: "1" }, // Europe
-    { src: "./public/imag/takayama .jpg", region: "3" }, // Asia
-    { src: "./public/imag/anglesey br.jpg", region: "1" }, // Europe
-    { src: "./public/imag/Helsinki.jpg", region: "1" }, // Europe
-    { src: "./public/imag/takayama .jpg", region: "3" }, // Asia
-    { src: "./public/imag/anglesey br.jpg", region: "1" }, // Europe
-    { src: "./public/imag/Helsinki.jpg", region: "1" }, // Europe
-    { src: "./public/imag/takayama .jpg", region: "3" }, // Asia
-    { src: "./public/imag/anglesey br.jpg", region: "1" }, // Europe
-    { src: "./public/imag/Helsinki.jpg", region: "1" }, // Europe
-    { src: "./public/imag/takayama .jpg", region: "3" }  // Asia
+    { src: "./public/imag/anglesey br.jpg", region: "1", place: "Anglesey, Wales", thingsToDo: "Explore beautiful beaches and historic sites" },
+    { src: "./public/imag/Helsinki.jpg", region: "1", place: "Helsinki, Finland", thingsToDo: "Visit stunning architecture and museums" },
+    { src: "./public/imag/takayama .jpg", region: "3", place: "Takayama, Japan", thingsToDo: "Experience traditional Japanese culture and markets" },
+    { src: "./public/imag/anglesey br.jpg", region: "1", place: "Anglesey, Wales", thingsToDo: "Explore beautiful beaches and historic sites" },
+    { src: "./public/imag/Helsinki.jpg", region: "1", place: "Helsinki, Finland", thingsToDo: "Visit stunning architecture and museums" },
+    { src: "./public/imag/takayama .jpg", region: "3", place: "Takayama, Japan", thingsToDo: "Experience traditional Japanese culture and markets" },
+    { src: "./public/imag/anglesey br.jpg", region: "1", place: "Anglesey, Wales", thingsToDo: "Explore beautiful beaches and historic sites" },
+    { src: "./public/imag/Helsinki.jpg", region: "1", place: "Helsinki, Finland", thingsToDo: "Visit stunning architecture and museums" },
+    { src: "./public/imag/takayama .jpg", region: "3", place: "Takayama, Japan", thingsToDo: "Experience traditional Japanese culture and markets" },
+    { src: "./public/imag/anglesey br.jpg", region: "1", place: "Anglesey, Wales", thingsToDo: "Explore beautiful beaches and historic sites" },
+    { src: "./public/imag/Helsinki.jpg", region: "1", place: "Helsinki, Finland", thingsToDo: "Visit stunning architecture and museums" },
+    { src: "./public/imag/takayama .jpg", region: "3", place: "Takayama, Japan", thingsToDo: "Experience traditional Japanese culture and markets" }
   ];
 
   const filteredDestinations = secondDestinations.filter(destination => destination.region === selectedRegion);
@@ -89,14 +89,18 @@ const Att = () => {
         <h2 className="lg:text-left lg:pl-12">Find things to do in cities around the world</h2>
       </div>
       <Filter selectedOption={selectedRegion} onOptionChange={setSelectedRegion} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 justify-items-center mt-8">
         {filteredDestinations.map((destination, index) => (
           <div key={index} className="w-full max-w-sm">
             <img
-              className="w-full h-48 rounded-lg object-cover"
+              className="p-2 rounded-lg w-[90%] h-48 object-cover"
               src={destination.src}
-              alt="Destination"
+              alt={destination.place}
             />
+            <div className="text-center mt-2">
+              <h3 className="font-semibold">{destination.place}</h3>
+              <p className="text-sm text-gray-600">{destination.thingsToDo}</p>
+            </div>
           </div>
         ))}
       </div>
