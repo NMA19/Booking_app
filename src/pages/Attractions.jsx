@@ -1,35 +1,107 @@
+import { useState } from 'react';
+import Filter from "../components/ui/Countryfilter.jsx";
 import Search from "../components/ui/Searchbar2.jsx";
 import Header from '../components/ui/header.jsx';
 
 const Att = () => {
-    return (
-        <div>
-            <div className="bg-red-900 ">
-                <Header 
-                    title={"Attractions, activities and experiences"} 
-                    text={"Discover new attractions and experiences to match your interests and travel style"}
-                />
-                <div className='relative mx-10 top-16'>
-                    <Search />
-                </div>
-            </div>
-            <div className="bg-white mt-24 py-8 px-4">
-                <h1 className="font-bold text-xl text-center lg:text-left lg:pl-12" >Top destinations</h1>
-                <div className="flex flex-wrap justify-center lg:justify-between gap-4 lg:gap-2">
-                    {["./public/imag/anglesey br.jpg", "./public/imag/Helsinki.jpg", "./public/imag/takayama .jpg", "./public/imag/anglesey br.jpg", "./public/imag/Helsinki.jpg", "./public/imag/takayama .jpg"].map((src, index) => (
-                        <div key={index} className="flex-1 min-w-[calc(100%-1rem)] sm:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1rem)]">
-                            <img
-                                className="w-full h-48 rounded-lg object-cover"
-                                src={src}
-                                alt="Destination"
-                            />
-                        </div>
-                    ))}
-                </div>
-                <h1 className="mt-12 text-center lg:text-left lg:pl-12">We've got you covered</h1>
-            </div>
+  const [selectedRegion, setSelectedRegion] = useState('1');
+
+  const firstDestinations = [
+    { src: "./public/imag/anglesey br.jpg", region: "1" }, // Europe
+    { src: "./public/imag/Helsinki.jpg", region: "1" }, // Europe
+    { src: "./public/imag/takayama .jpg", region: "3" }, // Asia
+    { src: "./public/imag/anglesey br.jpg", region: "1" }, // Europe
+    { src: "./public/imag/Helsinki.jpg", region: "1" }, // Europe
+    { src: "./public/imag/takayama .jpg", region: "3" }  // Asia
+  ];
+
+  const secondDestinations = [
+    { src: "./public/imag/anglesey br.jpg", region: "1" }, // Europe
+    { src: "./public/imag/Helsinki.jpg", region: "1" }, // Europe
+    { src: "./public/imag/takayama .jpg", region: "3" }, // Asia
+    { src: "./public/imag/anglesey br.jpg", region: "1" }, // Europe
+    { src: "./public/imag/Helsinki.jpg", region: "1" }, // Europe
+    { src: "./public/imag/takayama .jpg", region: "3" }, // Asia
+    { src: "./public/imag/anglesey br.jpg", region: "1" }, // Europe
+    { src: "./public/imag/Helsinki.jpg", region: "1" }, // Europe
+    { src: "./public/imag/takayama .jpg", region: "3" }, // Asia
+    { src: "./public/imag/anglesey br.jpg", region: "1" }, // Europe
+    { src: "./public/imag/Helsinki.jpg", region: "1" }, // Europe
+    { src: "./public/imag/takayama .jpg", region: "3" }  // Asia
+  ];
+
+  const filteredDestinations = secondDestinations.filter(destination => destination.region === selectedRegion);
+
+  return (
+    <div>
+      <div className="bg-red-900">
+        <Header 
+          title={"Attractions, activities and experiences"} 
+          text={"Discover new attractions and experiences to match your interests and travel style"}
+        />
+        <div className='relative mx-10 top-16'>
+          <Search />
         </div>
-    );
+      </div>
+      <div className="bg-white mt-24 py-8 px-4">
+        <h1 className="font-bold text-xl text-center sm:text-2xl lg:text-left lg:pl-12">Top destinations</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center mt-8">
+          {firstDestinations.map((destination, index) => (
+            <div key={index} className="w-full max-w-sm">
+              <img
+                className="w-full h-48 rounded-lg object-cover"
+                src={destination.src}
+                alt="Destination"
+              />
+            </div>
+          ))}
+        </div>
+        <h1 className="mt-12 text-center font-bold lg:text-left lg:pl-12 sm:text-2xl">We've got you covered</h1>
+        <ul className="grid justify-start gap-10 mt-8 sm:grid-cols-3 sm:text-xl">
+          <li className="flex items-start gap-2">
+            <div className="border-2 p-4 rounded-md">
+              <h2 className="font-bold">Explore top attractions</h2>
+              <h3 className="text-[#808080]">
+                Experience the best of your <br /> destination, with attractions,<br /> tours, activities, and more.
+              </h3>
+            </div>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="border-2 p-4 rounded-md">
+              <h2 className="font-bold">Fast and flexible</h2>
+              <h3 className="text-[#808080]">
+                Book tickets online in minutes,<br /> with free cancellation on many <br /> attractions.
+              </h3>
+            </div>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="border-2 p-4 rounded-md">
+              <h2 className="font-bold">Support when you need it</h2>
+              <h3 className="text-[#808080]">
+                Booking.com's global <br />Customer Service team is <br /> here to help 24/7.
+              </h3>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div className="mt-6">
+        <h1 className="font-bold lg:text-left lg:pl-12 sm:text-2xl">Explore more destinations</h1>
+        <h2 className="lg:text-left lg:pl-12">Find things to do in cities around the world</h2>
+      </div>
+      <Filter selectedOption={selectedRegion} onOptionChange={setSelectedRegion} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center mt-8">
+        {filteredDestinations.map((destination, index) => (
+          <div key={index} className="w-full max-w-sm">
+            <img
+              className="w-full h-48 rounded-lg object-cover"
+              src={destination.src}
+              alt="Destination"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default Att;

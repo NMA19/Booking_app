@@ -76,7 +76,7 @@ const Airport = () => {
           <h1 className="font-bold text-4xl">Book your airport taxi</h1>
           <p className="text-lg text-gray-600">Easy airport transfers to and from your accommodation</p>
         </div>
-        <ul className="flex relative  justify-center gap-10 mt-8 text-xs md:text-lg lg:text-xl">
+        <ul className="flex relative justify-center gap-10 mt-8 text-xs md:text-lg lg:text-xl sm:text-xs">
           <li className="flex items-start gap-2">
             <FlightIcon className="bg-[#F1FEF6] rounded-full p-2" style={{ fontSize: '3rem' }} />
             <div>
