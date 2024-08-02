@@ -3,7 +3,7 @@ import { faBed, faCalendarDays, faPerson } from "@fortawesome/free-solid-svg-ico
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file 
 import { DateRange } from 'react-date-range';
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { format } from 'date-fns';
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
@@ -14,6 +14,8 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
   const [date, setDate] = useState(initialDate);
   const [openOptions, setOpenOptions] = useState(false); 
   const [options, setOptions] = useState(initialOptions);
+  const dateRef = useRef(null);
+  const optionsRef = useRef(null);
 
   const handleOption = (name, operation) => {
     setOptions((prev) => ({
@@ -27,8 +29,24 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
     navigate("/search", { state: { destination, date, options } });
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dateRef.current && !dateRef.current.contains(event.target)) {
+        setOpenDate(false);
+      }
+      if (optionsRef.current && !optionsRef.current.contains(event.target)) {
+        setOpenOptions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="search flex flex-col sm:flex-row gap-4 p-4 bg-white border-2 border-yellow-500 text-gray-400 rounded-lg">
+    <div className="search flex flex-col justify-center mx-10 sm:flex-row gap-4 p-4 bg-white border-2 border-yellow-500 text-gray-400 rounded-lg">
       <div className="flex items-center m-2">
         <FontAwesomeIcon icon={faBed} />
         <input 
@@ -39,14 +57,14 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
           onChange={(e) => setDestination(e.target.value)}
         />
       </div>
-      <div className="flex items-center m-2 relative">
+      <div className="flex items-center m-2 relative" ref={dateRef}>
         <FontAwesomeIcon icon={faCalendarDays} />
         <span className="ml-2 cursor-pointer" onClick={() => setOpenDate(!openDate)}>
           {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}
         </span>
         {openDate && (
           <DateRange
-            className="absolute z-10 mt-2"
+            className="absolute z-10 border-solid border-2 border-red-900 rounded"
             editableDateInputs={true}
             onChange={(item) => setDate([item.selection])}
             moveRangeOnFirstSelection={false}
@@ -55,7 +73,7 @@ const SearchBar = ({ initialDestination, initialDate, initialOptions }) => {
           />
         )}
       </div>
-      <div className="flex items-center m-2 relative">
+      <div className="flex items-center m-2 relative" ref={optionsRef}>
         <FontAwesomeIcon icon={faPerson} />
         <span className="ml-2 cursor-pointer" onClick={() => setOpenOptions(!openOptions)}>
           {`${options.adult} adult . ${options.children} children . ${options.room} rooms`}

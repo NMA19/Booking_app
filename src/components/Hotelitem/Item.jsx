@@ -6,7 +6,7 @@ const Items = ({ imageUrls, hotelName, location, description, price, stars }) =>
   return (
     <div className="flex flex-col sm:flex-row w-full max-w-4xl border rounded-lg shadow-md bg-white">
       {/* Image Carousel */}
-      <div className="w-full sm:w-1/3 h-48 sm:h-auto overflow-hidden rounded-l-lg">
+      <div className="w-full sm:w-1/3 sm:h-auto overflow-hidden rounded-l-lg">
         <Carousel showThumbs={false} infiniteLoop useKeyboardArrows autoPlay>
           {imageUrls.map((url, index) => (
             <div key={index} className="w-full h-full flex items-center justify-center">
@@ -17,7 +17,7 @@ const Items = ({ imageUrls, hotelName, location, description, price, stars }) =>
       </div>
       
       {/* Hotel Details */}
-      <div className="flex flex-col justify-between w-full p-4 sm:w-2/3">
+      <div className="flex flex-col justify-around w-full px-4 sm:w-2/3">
         <h4 className="text-xl font-semibold text-gray-900">{hotelName}</h4>
         <h5 className="flex items-center text-gray-700 mt-1">
           <LocationOnIcon style={{ fontSize: '1rem' }} />

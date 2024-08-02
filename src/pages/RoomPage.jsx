@@ -1,12 +1,16 @@
 import './RoomPage.css';
-import List from "../components/ui/List";
-import ButtonUsage from "../components/ui/Button";
+import { Carousel } from 'react-responsive-carousel';
 import SearchBar from "../components/ui/searchbar";
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Circle from '../components/Reviews/reviewCircle'
+import Circle from '../components/Reviews/reviewCircle';
+import Header from '../components/ui/header'
+import PoolIcon from '@mui/icons-material/Pool';
+import WifiIcon from '@mui/icons-material/Wifi';
+import LocalParkingRoundedIcon from '@mui/icons-material/LocalParkingRounded';
+import Subscribe from './subsecribe'
 
 const RoomPage = () => {
   const location = useLocation();
@@ -43,9 +47,9 @@ const RoomPage = () => {
 
   const facilities={
     options:[
-      {icon: <LocationOnIcon/>, name: "location"},
-      {icon: <LocationOnIcon/>, name: "location"},
-      {icon: <LocationOnIcon/>, name: "location"},
+      {icon: <PoolIcon className='text-orange-500'/>, name: "Swimming pool"},
+      {icon: <WifiIcon className='text-orange-500'/>, name: "Free wifi"},
+      {icon: <LocalParkingRoundedIcon className='text-orange-500'/>, name: "Private parking"},
     ]
   }
 
@@ -53,19 +57,13 @@ const RoomPage = () => {
 
   return (
     <section>
-      <div className="bg-red-900 p-1 h-[250px]">
-        <h1 className="m-4 relative left-20 text-white font-bold">
-        TravelEase
-        </h1>
-        <ButtonUsage />
-        <List />
-      </div>
+      <Header/>
       <SearchBar 
         initialDestination={destination}
         initialDate={date}
         initialOptions={options}
       />
-      <div className='mx-auto w-[80%]'>
+      <div className='mx-auto w-[90%] md:w-[80%] mt-3'>
         <div className="photo-album">
           <div className="flex items-center">
             {Array.from({ length: stars }).map((_, index) => (
@@ -76,21 +74,36 @@ const RoomPage = () => {
           </div>
           <h2 className="text-3xl font-bold mb-1">Hotel name</h2>
           <div className='flex items-center mb-4'>
-            <LocationOnIcon style={{ fontSize: '1.5rem',}} className='text-blue-500'/>
+            <LocationOnIcon style={{ fontSize: '1.5rem',}} className='text-orange-500'/>
             <span>Hotel location</span>
           </div>
           <div className="photo-grid">
             {album.photos.map((photo, index) => (
-              <div key={index} className="photo-item">
+              <div key={index} className="photo-item hidden md:block">
                 <img src={photo.url} alt={photo.caption} />
               </div>
             ))}
           </div>
+          <div className="w-full overflow-hidden md:hidden">
+            <Carousel showThumbs={false} infiniteLoop useKeyboardArrows autoPlay>
+              {album.photos.map((photo, index) => (
+                <div key={index} className="w-full h-[200px]">
+                  <img
+                    src={photo.url}
+                    alt={photo.caption}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+
         </div>
         <div className='descDiv my-5'>
           <div>
             <h3 className='text-2xl font-bold mb-3'>Description title</h3>
             <p className='leading-relaxed'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, maxime tempora voluptatem enim beatae fugit adipisci aspernatur iure iusto ratione eaque quis. Omnis voluptatum nisi dolorum vel commodi corporis labore dolore molestiae doloribus vitae! Iste enim nisi nemo in, cupiditate quisquam dignissimos corporis! Veniam nesciunt quibusdam minima hic cumque quis, id beatae blanditiis veritatis eius quasi cum, iste rerum recusandae tempora tenetur dolore dolorem quisquam atque nam aperiam officia? Adipisci beatae natus, minus quos, amet consectetur distinctio soluta eum veritatis animi voluptatem repudiandae obcaecati provident inventore odit dolor. Dolore, ipsam libero ea beatae dicta vero architecto hic molestias dolores itaque?</p>
+            <h3 className='text-lg font-bold my-3'>Most popular facilities</h3>
             <div className='flex items-center'>
               {facilities.options.map((item, index) => (
                 <div key={index} className='flex items-center mr-4'>
@@ -100,10 +113,10 @@ const RoomPage = () => {
               ))}
             </div>
           </div>
-          <div className='py-5 px-8 bg-blue-50 rounded-lg leading-loose'>
+          <div className='py-5 px-8 bg-red-50 rounded-lg leading-loose'>
             <h3 className='text-lg font-bold'>Description title</h3>
             <div className='flex items-center'>
-              <LocationOnIcon style={{ fontSize: '1.2rem' }} className='text-blue-500'/>
+              <LocationOnIcon style={{ fontSize: '1.2rem' }} className='text-orange-500'/>
               <span className='infoSpan'>Hotel location</span>
             </div>
             <h3 className='text-base font-bold'>Options with:</h3>
@@ -115,96 +128,97 @@ const RoomPage = () => {
             <p className='infoSpan'>Spa and wellness centre</p>
             <p className='infoSpan'>Hot tub/Jacuzzi</p>
             <button 
-              className="rounded bg-blue-500 mt-3 py-1 w-full font-bold text-white shadow-md transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
+              className="rounded bg-orange-500 mt-3 py-1 w-full font-bold text-white shadow-md transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
                 Reserve
             </button>
           </div>
         </div>
         <div>
-          <h1 className="text-3xl font-bold">Availability</h1>
-          <table className="custom-table mt-5">
-            <thead>
-              <tr className='sticky top-0'>
-                <th>Accommodation Type</th>
-                <th>Number of guests</th>
-                <th>Today's price</th>
-                <th>Your choices</th>
-                <th>Select amount</th>
-                {/* <th></th> */}
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item, index) => (
-                item.options.map((option, optIndex) => (
-                  <tr key={`${index}-${optIndex}`}>
-                    {optIndex === 0 && (
-                      <td rowSpan={item.options.length}>
-                        {item.Accommodation}
-                      </td>
-                    )}
-                    <td>
-                      {(() => {
-                        const icons = [];
-                        for (let i = 0; i < option.guests; i++) {
-                          icons.push(<FontAwesomeIcon icon={faUser} key={i} style={{ marginRight: '2px' }}/>);
-                        }
-                        return icons;
-                      })()}
-                    </td>
-                    <td>{option.price}</td>
-                    <td>{option.choices}</td>
-                    <td>
-                      <select defaultValue={option.amount[0]} className='rounded border-solid border border-black'>
-                        {option.amount.map((amount, amtIndex) => (
-                          <option key={amtIndex} value={amount}>
-                            {amount}
-                          </option>
+          <h1 className="text-2xl md:text-3xl font-bold">Availability</h1>
+          <div className="overflow-x-auto">
+            <table className="custom-table mt-5 w-full">
+              <thead>
+                <tr className='bg-gray-100'>
+                  <th>Accommodation Type</th>
+                  <th>Number of guests</th>
+                  <th>Today's price</th>
+                  <th>Your choices</th>
+                  <th>Select amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item, index) => (
+                  item.options.map((option, optIndex) => (
+                    <tr key={`${index}-${optIndex}`} className='border-t'>
+                      {optIndex === 0 && (
+                        <td rowSpan={item.options.length}>
+                          {item.Accommodation}
+                        </td>
+                      )}
+                      <td>
+                        {Array.from({ length: option.guests }).map((_, i) => (
+                          <FontAwesomeIcon icon={faUser} key={i} style={{ marginRight: '2px' }} />
                         ))}
-                      </select>
-                    </td>
-                    {index === 0 && optIndex === 0 &&
-                      (<td className='sticky top-12'>
-                        <button 
-                          className="rounded bg-blue-500 py-2 px-[7%] font-bold text-white shadow-md transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
+                      </td>
+                      <td>{option.price}</td>
+                      <td>{option.choices}</td>
+                      <td>
+                        <select defaultValue={option.amount[0]} className='rounded border border-gray-300'>
+                          {option.amount.map((amount, amtIndex) => (
+                            <option key={amtIndex} value={amount}>
+                              {amount}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                      {index === 0 && optIndex === 0 &&
+                        (<td>
+                          <button
+                            className="rounded bg-orange-500 py-2 px-[7%] font-bold text-white shadow-md transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
                             I will reserve
-                        </button>
-                      </td>)
-                    }
-                  </tr>
-                ))
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <h1 className="text-3xl font-bold my-5">Guest reviews</h1>
-          <div className='grid grid-cols-3 gap-y-5'>
-            <div className='m-auto'>
-              <p className='font-bold mx-auto text-center mb-2'>Staff</p>
-              <Circle value={8.2}/>
-            </div>
-            <div className='m-auto'>
-              <p className='font-bold mx-auto text-center mb-2'>Staff</p>
-              <Circle value={8.2}/>
-            </div>
-            <div className='m-auto'>
-              <p className='font-bold mx-auto text-center mb-2'>Cleanliness</p>
-              <Circle value={5}/>
-            </div>
-            <div className='m-auto'>
-              <p className='font-bold mx-auto text-center mb-2'>Comfort</p>
-              <Circle value={2}/>
-            </div>
-            <div className='m-auto'>
-              <p className='font-bold mx-auto text-center mb-2'>Value for money</p>
-              <Circle value={9.5}/>
-            </div>
-            <div className='m-auto'>
-              <p className='font-bold mx-auto text-center mb-2'>Location</p>
-              <Circle value={9.5}/>
+                          </button>
+                        </td>)
+                      }
+                    </tr>
+                  ))
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <div>
+            <h1 className="text-3xl font-bold my-5">Guest reviews</h1>
+            <div className='grid grid-cols-2 gap-y-5 md:grid-cols-3 mb-8'>
+              <div className='m-auto'>
+                <p className='font-bold mx-auto text-center mb-2'>Staff</p>
+                <Circle value={8.2}/>
+              </div>
+              <div className='m-auto'>
+                <p className='font-bold mx-auto text-center mb-2'>Staff</p>
+                <Circle value={8.2}/>
+              </div>
+              <div className='m-auto'>
+                <p className='font-bold mx-auto text-center mb-2'>Cleanliness</p>
+                <Circle value={5}/>
+              </div>
+              <div className='m-auto'>
+                <p className='font-bold mx-auto text-center mb-2'>Comfort</p>
+                <Circle value={2}/>
+              </div>
+              <div className='m-auto'>
+                <p className='font-bold mx-auto text-center mb-2'>Value for money</p>
+                <Circle value={9.5}/>
+              </div>
+              <div className='m-auto'>
+                <p className='font-bold mx-auto text-center mb-2'>Location</p>
+                <Circle value={9.5}/>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className='mt-14'>
+        <Subscribe/>
       </div>
     </section>
   );

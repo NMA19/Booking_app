@@ -51,11 +51,11 @@
 }
 
 .custom-table th {
-  background-color: #1e3a8a;
+  background-color: #991b1b;
   color: white;
 }
 .custom-table th:nth-child(even) {
-  background-color: #3050a9;
+  background-color: #b91c1c;
   /* color: white; */
 }
 

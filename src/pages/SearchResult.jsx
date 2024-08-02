@@ -5,7 +5,10 @@ import Items from "../components/Hotelitem/Item";
 import { useLocation } from 'react-router-dom';
 import Map from "../components/Map";
 import { useEffect, useState } from 'react';
+import Header from '../components/ui/header';
+import Menu from '../components/Drop Down Menu/dropDownMenu';
 
+// Sample data
 const hotels = [
   {
     imageUrls: [
@@ -38,6 +41,66 @@ const hotels = [
   // Add more hotel objects as needed
 ];
 
+const menuOptions = [
+  {
+    title: "Popular filters for this area",
+    choice: [
+      { label: "Hotels"},
+      { label: "Apartments"},
+      { label: "4 star"},
+      { label: "Free wifi"},
+      { label: "Swimming pool"},
+    ],
+  },
+  {
+    title: "Facilities",
+    choice: [
+      { label: "Parking"},
+      { label: "Free WiFi"},
+      { label: "Restaurant"},
+      { label: "Pets allowed"},
+      { label: "Room service"},
+      { label: "Fitness center"},
+      { label: "Family room"},
+      { label: "Swimming pool"},
+    ],
+  },
+  {
+    title: "Property rating",
+    choice: [
+      { label: "3 stars"},
+      { label: "5 stars"},
+    ],
+  },
+  {
+    title: "Room facilities",
+    choice: [
+      { label: "Private bathroom"},
+      { label: "Air conditioning"},
+      { label: "Toilet"},
+      { label: "Balcony"},
+      { label: "TV"},
+      { label: "Kitchen"},
+    ],
+  },
+  {
+    title: "Distance from center of city",
+    choice: [
+      { label: "Less than 3 km"},
+      { label: "Less than 5 km"},
+    ],
+  },
+  {
+    title: "Fun things to do",
+    choice: [
+      { label: "Fitness center"},
+      { label: "Sauna"},
+      { label: "Spa and wellness center"},
+      { label: "Massage"},
+    ],
+  },
+];
+
 const fetchCoordinates = async (address) => {
   const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${address}`);
   const data = await response.json();
@@ -66,23 +129,26 @@ const Result = () => {
 
   return (
     <section>
-      <div className="bg-red-900 p-1 h-[250px]">
-        <h1 className="m-4 relative left-20 text-white font-bold">
-          TravelEase
-        </h1>
-        <ButtonUsage />
-        <List />
-      </div>
+      <Header/>
       <SearchBar 
         initialDestination={destination}
         initialDate={date}
         initialOptions={options}
       />
-      <div className="flex flex-col md:flex-row justify-center gap-5 py-6 px-10">
+      <div className="flex flex-col md:flex-row justify-center gap-5 py-6 px-4 md:px-10">
         <div className="w-full md:w-1/3">
-          {coordinates && <Map lat={coordinates.lat} lng={coordinates.lng} />}
+          {coordinates && <Map lat={coordinates.lat} lng={coordinates.lng} height={200} />}
+          <div className="sticky top-0 mt-5 md:mt-0">
+            {menuOptions.map((opt, index) => (
+              <Menu
+                key={index}
+                title={opt.title}
+                options={opt.choice}
+              />
+            ))}
+          </div>
         </div>
-        <div className="w-full md:w-2/3  flex flex-col gap-5">
+        <div className="w-full md:w-2/3 flex flex-col gap-5">
           {hotels.map((hotel, index) => (
             <Items
               key={index}

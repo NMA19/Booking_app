@@ -11,9 +11,9 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
 });
 
-const Map = ({ lat, lng }) => {
+const Map = ({ lat, lng, height }) => {
   return (
-    <MapContainer center={[lat, lng]} zoom={13} style={{ height: '400px', width: '100%' }}>
+    <MapContainer center={[lat, lng]} zoom={13} style={{ height: `${height}px`, width: '100%' }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
