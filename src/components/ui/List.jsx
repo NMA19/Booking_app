@@ -8,38 +8,38 @@ const Items = () => {
   const currentPath = location.pathname;
 
   return (
-    <div className="header flex justify-center p-4">
-      <div className="headerList flex flex-wrap justify-center gap-4  rounded-lg text-white w-full max-w-4xl p-4 md:p-6 lg:p-8">
+    <div className="header flex justify-center p-4 rounded-[20%] ">
+      <div className="headerList flex flex-wrap justify-center gap-4 text-white w-full max-w-4xl p-4 md:p-6 lg:p-8">
         <Link 
-          className={`headerItem flex items-center p-3 ${currentPath === '/' ? 'bg-red-700 border-2 border-white rounded-full' : 'hover:bg-red-800'} rounded-lg`} 
+          className={`headerItem flex items-center p-3 ${currentPath === '/' ? 'bg-red-700 border-2 border-white rounded-full' : 'hover:bg-red-800'} rounded`} 
           to="/"
         >
           <FontAwesomeIcon icon={faBed} />
           <span className="ml-2">Stays</span>
         </Link>
         <Link 
-          className={`headerItem flex items-center p-3 ${currentPath === '/flight' ? 'bg-red-700 border-2 border-white rounded-full' : 'hover:bg-red-800'} rounded-lg`} 
+          className={`headerItem flex items-center p-3 ${currentPath === '/flight' ? 'bg-red-700 border-2 border-white rounded-full' : 'hover:bg-red-800'} rounded`} 
           to="/flight"
         >
           <FontAwesomeIcon icon={faPlane} />
           <span className="ml-2">Flight</span>
         </Link>
         <Link 
-          className={`headerItem flex items-center p-3 ${currentPath === '/car' ? 'bg-red-700 border-2 border-white rounded-full' : 'hover:bg-red-800'} rounded-lg`} 
+          className={`headerItem flex items-center p-3 ${currentPath === '/car' ? 'bg-red-700 border-2 border-white rounded-full' : 'hover:bg-red-800'} rounded-`} 
           to="/car"
         >
           <FontAwesomeIcon icon={faCar} />
           <span className="ml-2">Car rental</span>
         </Link>
         <Link 
-          className={`headerItem flex items-center p-3 ${currentPath === '/attraction' ? 'bg-red-700 border-2 border-white rounded-full' : 'hover:bg-red-800'} rounded-lg`} 
+          className={`headerItem flex items-center p-3 ${currentPath === '/attraction' ? 'bg-red-700 border-2 border-white rounded-full' : 'hover:bg-red-800'} rounded`} 
           to="/attraction"
         >
           <AttractionsRoundedIcon />
           <span className="ml-2">Attractions</span>
         </Link>
         <Link 
-          className={`headerItem flex items-center p-3 ${currentPath === '/taxi' ? 'bg-red-700 border-2 border-white rounded-full' : 'hover:bg-red-800'} rounded-lg`} 
+          className={`headerItem flex items-center p-3 ${currentPath === '/taxi' ? 'bg-red-700 border-2 border-white rounded-full' : 'hover:bg-red-800'} rounded`} 
           to="/taxi"
         >
           <FontAwesomeIcon icon={faTaxi} />
