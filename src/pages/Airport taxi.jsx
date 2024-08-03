@@ -1,4 +1,5 @@
-import  { useState } from 'react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import FlightIcon from "@mui/icons-material/Flight";
 import PaymentIcon from "@mui/icons-material/Payment";
 import CheckIcon from '@mui/icons-material/Check';
@@ -68,13 +69,23 @@ const Airport = () => {
 
   return (
     <div className="relative">
-      <Header/>
-      <div className="bg-[#F5F5F5] p-8">
-      <div className="text-start mb-8 lg:text-4xl sm:text-sm md:text-xl lg:h-[200px]">
+      <Header />
+      <motion.div
+        className="bg-[#F5F5F5] p-8"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="text-start mb-8 lg:text-4xl sm:text-sm md:text-xl lg:h-[200px]">
           <h1 className="font-bold text-4xl">Book your airport taxi</h1>
           <p className="text-lg text-gray-600">Easy airport transfers to and from your accommodation</p>
         </div>
-        <ul className="flex relative justify-center gap-10 mt-8 text-xs md:text-lg lg:text-xl sm:text-xs">
+        <motion.ul
+          className="flex relative justify-center gap-10 mt-8 text-xs md:text-lg lg:text-xl sm:text-xs"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <li className="flex items-start gap-2">
             <FlightIcon className="bg-[#F1FEF6] rounded-full p-2" style={{ fontSize: '3rem' }} />
             <div>
@@ -102,16 +113,26 @@ const Airport = () => {
               </h3>
             </div>
           </li>
-        </ul>
-      </div>
-      <div className="bg-[#FFFF] p-9 mt-10 text-sm md:text-lg lg:text-xl">
+        </motion.ul>
+      </motion.div>
+      <motion.div
+        className="bg-[#FFFF] p-9 mt-10 text-sm md:text-lg lg:text-xl"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
         <div className="text-center mb-8">
           <h1 className="font-bold text-4xl">Airport transfers made easy</h1>
         </div>
         <div className="flex">
           <div className="w-1/2 pr-4">
             <ul className="space-y-16">
-              <li className="flex items-start gap-5">
+              <motion.li
+                className="flex items-start gap-5"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
                 <DirectionsCarIcon className="bg-[#CCE1FF] rounded-full text-blue-500 p-2" style={{ fontSize: '4rem' }} />
                 <div>
                   <h2 className="text-xl font-semibold">Booking your airport taxi</h2>
@@ -119,8 +140,13 @@ const Airport = () => {
                     Confirmation is immediate. If your plans change, you can cancel for free up to 24 hours before your scheduled pick-up time.
                   </h3>
                 </div>
-              </li>
-              <li className="flex items-start gap-5">
+              </motion.li>
+              <motion.li
+                className="flex items-start gap-5"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+              >
                 <HailIcon className="bg-[#CCE1FF] rounded-full text-blue-500 p-2" style={{ fontSize: '4rem' }} />
                 <div>
                   <h2 className="text-xl font-semibold">Meeting your driver</h2>
@@ -128,8 +154,13 @@ const Airport = () => {
                     You'll be met on arrival and taken to your vehicle. Your driver will track your flight, so they'll wait for you even if it's delayed.
                   </h3>
                 </div>
-              </li>
-              <li className="flex items-start gap-5">
+              </motion.li>
+              <motion.li
+                className="flex items-start gap-5"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.0 }}
+              >
                 <ApartmentIcon className="bg-[#CCE1FF] rounded-full text-blue-500 p-2" style={{ fontSize: '4rem' }} />
                 <div>
                   <h2 className="text-xl font-semibold">Arriving at your destination</h2>
@@ -137,20 +168,30 @@ const Airport = () => {
                     Get to your destination quickly and safely – no waiting in line for a taxi, no figuring out public transport.
                   </h3>
                 </div>
-              </li>
+              </motion.li>
             </ul>
           </div>
           <div className="w-1/2 pl-4">
-            {/* You can add additional content here if needed */}
+            {/* Additional content can be added here */}
           </div>
         </div>
-      </div>
-      <div className="bg-[#F5F5F5] p-10 mt-7">
+      </motion.div>
+      <motion.div
+        className="bg-[#F5F5F5] p-10 mt-7"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.2 }}
+      >
         <h2 className="font-bold text-center text-3xl">Airport taxis for any kind of trip</h2>
         <div className="mt-8 ml-4">
           <ButtonGroup onFilterChange={handleFilterChange} />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.4 }}
+        >
           {filteredTaxiOptions.map((option, index) => (
             <TaxiCard
               key={index}
@@ -162,8 +203,8 @@ const Airport = () => {
               cancellation={option.cancellation}
             />
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

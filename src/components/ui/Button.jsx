@@ -40,7 +40,6 @@ export default function ButtonUsage() {
             Login
           </Button>
         </Link>
-        {/* <Items /> */}
       </div>
       <div className="md:hidden">
         <IconButton onClick={toggleDrawer(true)} sx={{ color: 'white' }}>

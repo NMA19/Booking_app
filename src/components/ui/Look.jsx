@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
+import { motion } from 'framer-motion';
 
 const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }) => {
   const [pickupLocation, setPickupLocation] = useState(initialPickupLocation);
@@ -16,7 +17,7 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
   const [openPickupDate, setOpenPickupDate] = useState(false);
   const [openDropoffDate, setOpenDropoffDate] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState(null);
-  const [selectedFilter, setSelectedFilter] = useState('City'); // Added state for filter
+  const [selectedFilter, setSelectedFilter] = useState('City');
   const navigate = useNavigate();
 
   const handleSearch = () => {
@@ -57,7 +58,6 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
         Yes, you can modify or cancel your reservation. Many bookings offer free cancellation up to 48 hours before pick-up time.
       `,
     },
-    // More FAQ items here
   ];
 
   const destinations = [
@@ -71,16 +71,25 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
       name: 'Palma de Mallorca Airport',
       details: '43 car hire locations. Average price of DZD 4,208.28 per day.',
     },
-    // Add more destinations as needed
   ];
 
-  // Filter destinations based on selected filter
   const filteredDestinations = destinations.filter((destination) => destination.type === selectedFilter);
 
   return (
     <div>
-      <div className="search flex flex-wrap gap-4 p-4 bg-white border-2 border-yellow-500 text-gray-400 rounded-lg">
-        <div className="flex-1 flex items-center gap-2">
+      <motion.div
+        className="search flex flex-wrap gap-4 p-4 bg-white border-2 border-yellow-500 text-gray-400 rounded-lg"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Search Fields */}
+        <motion.div
+          className="flex-1 flex items-center gap-2"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0 }}
+        >
           <SearchIcon />
           <input
             type="text"
@@ -89,8 +98,14 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             onChange={(e) => setPickupLocation(e.target.value)}
             className="outline-none flex-grow p-2"
           />
-        </div>
-        <div className="flex-1 flex items-center gap-2 relative">
+        </motion.div>
+        {/* Pickup Date */}
+        <motion.div
+          className="flex-1 flex items-center gap-2 relative"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <FontAwesomeIcon icon={faCalendarDays} />
           <span
             onClick={() => setOpenPickupDate(!openPickupDate)}
@@ -108,8 +123,14 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
               minDate={new Date()}
             />
           )}
-        </div>
-        <div className="flex-1 flex items-center gap-2">
+        </motion.div>
+        {/* Pickup Time */}
+        <motion.div
+          className="flex-1 flex items-center gap-2"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <FontAwesomeIcon icon={faClock} />
           <input
             type="time"
@@ -117,8 +138,14 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             onChange={(e) => setPickupTime(e.target.value)}
             className="outline-none flex-grow p-2"
           />
-        </div>
-        <div className="flex-1 flex items-center gap-2 relative">
+        </motion.div>
+        {/* Dropoff Date */}
+        <motion.div
+          className="flex-1 flex items-center gap-2 relative"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
           <FontAwesomeIcon icon={faCalendarDays} />
           <span
             onClick={() => setOpenDropoffDate(!openDropoffDate)}
@@ -136,8 +163,14 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
               minDate={new Date()}
             />
           )}
-        </div>
-        <div className="flex-1 flex items-center gap-2">
+        </motion.div>
+        {/* Dropoff Time */}
+        <motion.div
+          className="flex-1 flex items-center gap-2"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
           <FontAwesomeIcon icon={faClock} />
           <input
             type="time"
@@ -145,18 +178,29 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             onChange={(e) => setDropoffTime(e.target.value)}
             className="outline-none flex-grow p-2"
           />
-        </div>
-        <div className="flex-1 flex justify-center">
+        </motion.div>
+        {/* Search Button */}
+        <motion.div
+          className="flex-1 flex justify-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.0 }}
+        >
           <button
             onClick={handleSearch}
             className="rounded-lg bg-orange-500 py-3 px-6 font-bold text-white transition-all hover:shadow-lg focus:opacity-85 disabled:pointer-events-none disabled:opacity-50"
           >
             Search
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className='bg-[#F5F5F5]'>
+      <motion.div
+        className='bg-[#F5F5F5]'
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.2 }}
+      >
         <ul className="grid justify-start gap-48 mt-8 sm:grid-cols-3 sm:text-xl p- rounded-md">
           <li className="flex items-start gap-2">
             <div className="p-4 rounded-md">
@@ -183,10 +227,23 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             </div>
           </li>
         </ul>
-      </div>
+      </motion.div>
 
-      <h1 className='text-black text-2xl font-bold p-2'>Frequently asked questions</h1>
-      <div className="text-black p-3 grid grid-cols-2 text-center gap-3">
+      <motion.h1
+        className='text-black text-2xl font-bold p-2'
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.4 }}
+      >
+        Frequently asked questions
+      </motion.h1>
+
+      <motion.div
+        className="text-black p-3 grid grid-cols-2 text-center gap-3"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.6 }}
+      >
         {faqData.map((item, index) => (
           <div key={index} className="mb-7">
             <div
@@ -201,14 +258,19 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             )}
           </div>
         ))}
-      </div>
+      </motion.div>
 
       <div className='p-2'>
         <h1 className='text-black font-bold text-2xl'>Popular car hire destinations</h1>
         <h2>Explore more options to hire a car for cheap</h2>
       </div>
 
-      <div className="flex justify-center gap-4 p-4">
+      <motion.div
+        className="flex justify-center gap-4 p-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.8 }}
+      >
         <button
           className={`px-4 py-2 rounded-md ${selectedFilter === 'City' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
           onClick={() => setSelectedFilter('City')}
@@ -221,9 +283,14 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
         >
           Airports Worldwide
         </button>
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 justify-items-center mt-8">
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-4 gap-4 justify-items-center mt-8"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 2.0 }}
+      >
         {filteredDestinations.map((destination, index) => (
           <div key={index} className="w-full max-w-sm">
             <div className="p-4 rounded-lg bg-white shadow-md">
@@ -232,7 +299,7 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             </div>
           </div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

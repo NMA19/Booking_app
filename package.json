@@ -21,6 +21,7 @@
     "@mui/material": "^5.15.17",
     "autoprefixer": "^10.4.19",
     "date-fns": "^3.6.0",
+    "framer-motion": "^11.3.21",
     "leaflet": "^1.9.4",
     "node_module": "^0.0.0",
     "postcss": "^8.4.38",
