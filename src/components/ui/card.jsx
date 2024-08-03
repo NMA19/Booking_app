@@ -1,20 +1,13 @@
 function HotelCard({ source }) {
   return (
-<<<<<<< HEAD
     <div className="flex items-center justify-center p-4">
       <div className="bg-white rounded-3xl shadow-xl max-w-sm md:max-w-md lg:max-w-lg w-full">
         <div className="rounded-3xl bg-slate-100 flex flex-col">
-=======
-    <div className="flex items-center justify-center h-screen ">
-      <div className="mx-auto bg-white rounded-3xl shadow-xl">
-        <div className="grid rounded-3xl max-w-[370px] shadow-sm bg-slate-100 flex-col">
->>>>>>> 093ea88 (Your commit message)
           <img
             src={source}
             className="rounded-t-3xl w-full h-60 object-cover md:h-72 lg:h-80"
             alt="Hotel"
           />
-
           <div className="p-4">
             <h2 className="text-xl font-extrabold">Aparthotel Stare Miastro</h2>
             <span className="text-slate-400 block text-md font-semibold mt-2">Madrid</span>
