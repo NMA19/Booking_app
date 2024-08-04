@@ -8,6 +8,14 @@ import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { motion } from 'framer-motion';
 
+// Sample images (replace with actual image paths or URLs)
+const images = {
+  'El Segundo': './imag/ZASCwKg9.jpeg ',
+  'Phoenix': './imag/WKNvGK6D.jpeg',
+  'Palma de Mallorca Airport': './imag/psTCC7LN.jpeg',
+  'Orlando International Airport': '../imag/psTCC7LN.jpeg',
+};
+
 const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }) => {
   const [pickupLocation, setPickupLocation] = useState(initialPickupLocation);
   const [pickupDate, setPickupDate] = useState(initialPickupDate);
@@ -67,9 +75,19 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
       details: '105 car hire locations. Average price of DZD 7,843.21 per day.',
     },
     {
+      type: 'City',
+      name: 'Phoenix',
+      details: '81 car hire locations. Average price of DZD 8,261.33 per day.',
+    },
+    {
       type: 'Airport',
       name: 'Palma de Mallorca Airport',
       details: '43 car hire locations. Average price of DZD 4,208.28 per day.',
+    },
+    {
+      type: 'Airport',
+      name: 'Orlando International Airport',
+      details: '125 car hire locations. Average price of DZD 5,754.18 per day.',
     },
   ];
 
@@ -77,13 +95,13 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
 
   return (
     <div>
+      {/* Search Fields */}
       <motion.div
         className="search flex flex-wrap gap-4 p-4 bg-white border-2 border-yellow-500 text-gray-400 rounded-lg"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Search Fields */}
         <motion.div
           className="flex-1 flex items-center gap-2"
           initial={{ opacity: 0, y: -20 }}
@@ -99,6 +117,7 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             className="outline-none flex-grow p-2"
           />
         </motion.div>
+
         {/* Pickup Date */}
         <motion.div
           className="flex-1 flex items-center gap-2 relative"
@@ -124,6 +143,7 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             />
           )}
         </motion.div>
+
         {/* Pickup Time */}
         <motion.div
           className="flex-1 flex items-center gap-2"
@@ -139,6 +159,7 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             className="outline-none flex-grow p-2"
           />
         </motion.div>
+
         {/* Dropoff Date */}
         <motion.div
           className="flex-1 flex items-center gap-2 relative"
@@ -164,6 +185,7 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             />
           )}
         </motion.div>
+
         {/* Dropoff Time */}
         <motion.div
           className="flex-1 flex items-center gap-2"
@@ -179,6 +201,7 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
             className="outline-none flex-grow p-2"
           />
         </motion.div>
+
         {/* Search Button */}
         <motion.div
           className="flex-1 flex justify-center"
@@ -195,110 +218,84 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
         </motion.div>
       </motion.div>
 
+      {/* Destinations and FAQs */}
       <motion.div
-        className='bg-[#F5F5F5]'
+        className="bg-[#F5F5F5]"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 1.2 }}
       >
-        <ul className="grid justify-start gap-48 mt-8 sm:grid-cols-3 sm:text-xl p- rounded-md">
-          <li className="flex items-start gap-2">
-            <div className="p-4 rounded-md">
-              <h2 className="font-bold text-black">We’re here for you</h2>
-              <h3 className="text-gray-600">
-                Customer support in over 30 languages
-              </h3>
+        <div className="grid sm:grid-cols-2 gap-8 p-8">
+          <div>
+            <h2 className="font-bold text-black text-xl mb-4">Popular Destinations</h2>
+            <div className="flex mb-4">
+              <button
+                className={`px-4 py-2 border-b-2 ${
+                  selectedFilter === 'City'
+                    ? 'border-orange-500 text-orange-500'
+                    : 'border-transparent text-black hover:text-orange-500'
+                }`}
+                onClick={() => setSelectedFilter('City')}
+              >
+                Cities Worldwide
+              </button>
+              <button
+                className={`px-4 py-2 border-b-2 ${
+                  selectedFilter === 'Airport'
+                    ? 'border-orange-500 text-orange-500'
+                    : 'border-transparent text-black hover:text-orange-500'
+                }`}
+                onClick={() => setSelectedFilter('Airport')}
+              >
+                Airports Worldwide
+              </button>
             </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <div className="p-4 rounded-md">
-              <h2 className="font-bold text-black">Free cancellation</h2>
-              <h3 className="text-gray-600">
-                Up to 48 hours before pick-up, on most bookings
-              </h3>
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <div className="p-4 rounded-md">
-              <h2 className="font-bold text-black">6 million+ reviews</h2>
-              <h3 className="text-gray-600">
-                By real, verified customers
-              </h3>
-            </div>
-          </li>
-        </ul>
-      </motion.div>
-
-      <motion.h1
-        className='text-black text-2xl font-bold p-2'
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1.4 }}
-      >
-        Frequently asked questions
-      </motion.h1>
-
-      <motion.div
-        className="text-black p-3 grid grid-cols-2 text-center gap-3"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1.6 }}
-      >
-        {faqData.map((item, index) => (
-          <div key={index} className="mb-7">
-            <div
-              className="flex items-center cursor-pointer"
-              onClick={() => toggleFAQ(index)}
-            >
-              <h3 className="font-bold text-lg flex-grow">{item.question}</h3>
-              <FontAwesomeIcon icon={activeFAQ === index ? faChevronUp : faChevronDown} className="ml-2" />
-            </div>
-            {activeFAQ === index && (
-              <p className="text-gray-600 mt-2">{item.answer}</p>
-            )}
+            <ul className="flex flex-col gap-4">
+              {filteredDestinations.map((destination, index) => (
+                <motion.li
+                  key={index}
+                  className="flex gap-4 items-center bg-white p-4 rounded-lg shadow-md"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                >
+                  <img
+                    src={images[destination.name] || images['default']}
+                    alt={destination.name}
+                    className="w-24 h-24 object-cover rounded-md"
+                  />
+                  <div>
+                    <p className="font-semibold">{destination.name}</p>
+                    <p className="text-gray-600">{destination.details}</p>
+                  </div>
+                </motion.li>
+              ))}
+            </ul>
           </div>
-        ))}
-      </motion.div>
-
-      <div className='p-2'>
-        <h1 className='text-black font-bold text-2xl'>Popular car hire destinations</h1>
-        <h2>Explore more options to hire a car for cheap</h2>
-      </div>
-
-      <motion.div
-        className="flex justify-center gap-4 p-4"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1.8 }}
-      >
-        <button
-          className={`px-4 py-2 rounded-md ${selectedFilter === 'City' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
-          onClick={() => setSelectedFilter('City')}
-        >
-          Cities Worldwide
-        </button>
-        <button
-          className={`px-4 py-2 rounded-md ${selectedFilter === 'Airport' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
-          onClick={() => setSelectedFilter('Airport')}
-        >
-          Airports Worldwide
-        </button>
-      </motion.div>
-
-      <motion.div
-        className="grid grid-cols-1 sm:grid-cols-4 gap-4 justify-items-center mt-8"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 2.0 }}
-      >
-        {filteredDestinations.map((destination, index) => (
-          <div key={index} className="w-full max-w-sm">
-            <div className="p-4 rounded-lg bg-white shadow-md">
-              <h3 className="font-semibold">{destination.name}</h3>
-              <p className="text-sm text-gray-600">{destination.details}</p>
-            </div>
+          <div>
+            <h2 className="font-bold text-black text-xl mb-4">Frequently Asked Questions</h2>
+            <ul className="flex flex-col gap-4">
+              {faqData.map((faq, index) => (
+                <li key={index} className="bg-white p-4 rounded-lg shadow-md">
+                  <div
+                    onClick={() => toggleFAQ(index)}
+                    className="flex justify-between items-center cursor-pointer"
+                  >
+                    <h3 className="font-semibold">{faq.question}</h3>
+                    <FontAwesomeIcon
+                      icon={activeFAQ === index ? faChevronUp : faChevronDown}
+                    />
+                  </div>
+                  {activeFAQ === index && (
+                    <div className="mt-2 text-gray-600">
+                      <p>{faq.answer}</p>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
-        ))}
+        </div>
       </motion.div>
     </div>
   );
@@ -306,20 +303,8 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
 
 LookAt.propTypes = {
   initialPickupLocation: PropTypes.string,
-  initialPickupDate: PropTypes.arrayOf(
-    PropTypes.shape({
-      startDate: PropTypes.instanceOf(Date),
-      endDate: PropTypes.instanceOf(Date),
-      key: PropTypes.string,
-    })
-  ),
-  initialDropoffDate: PropTypes.arrayOf(
-    PropTypes.shape({
-      startDate: PropTypes.instanceOf(Date),
-      endDate: PropTypes.instanceOf(Date),
-      key: PropTypes.string,
-    })
-  ),
+  initialPickupDate: PropTypes.array.isRequired,
+  initialDropoffDate: PropTypes.array.isRequired,
 };
 
 LookAt.defaultProps = {
