@@ -220,83 +220,84 @@ const LookAt = ({ initialPickupLocation, initialPickupDate, initialDropoffDate }
 
       {/* Destinations and FAQs */}
       <motion.div
-        className="bg-[#F5F5F5]"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1.2 }}
-      >
-        <div className="grid sm:grid-cols-2 gap-8 p-8">
-          <div>
-            <h2 className="font-bold text-black text-xl mb-4">Popular Destinations</h2>
-            <div className="flex mb-4">
-              <button
-                className={`px-4 py-2 border-b-2 ${
-                  selectedFilter === 'City'
-                    ? 'border-orange-500 text-orange-500'
-                    : 'border-transparent text-black hover:text-orange-500'
-                }`}
-                onClick={() => setSelectedFilter('City')}
-              >
-                Cities Worldwide
-              </button>
-              <button
-                className={`px-4 py-2 border-b-2 ${
-                  selectedFilter === 'Airport'
-                    ? 'border-orange-500 text-orange-500'
-                    : 'border-transparent text-black hover:text-orange-500'
-                }`}
-                onClick={() => setSelectedFilter('Airport')}
-              >
-                Airports Worldwide
-              </button>
+  className="bg-[#F5F5F5]"
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 1.2 }}
+>
+  <div className="grid gap-8 p-8"> {/* Removed sm:grid-cols-2 */}
+    <div className="mb-8"> {/* Added margin-bottom */}
+      <h2 className="font-bold text-black text-xl mb-4">Popular Destinations</h2>
+      <div className="flex mb-4">
+        <button
+          className={`px-4 py-2 border-b-2 ${
+            selectedFilter === 'City'
+              ? 'border-orange-500 text-orange-500'
+              : 'border-transparent text-black hover:text-orange-500'
+          }`}
+          onClick={() => setSelectedFilter('City')}
+        >
+          Cities Worldwide
+        </button>
+        <button
+          className={`px-4 py-2 border-b-2 ${
+            selectedFilter === 'Airport'
+              ? 'border-orange-500 text-orange-500'
+              : 'border-transparent text-black hover:text-orange-500'
+          }`}
+          onClick={() => setSelectedFilter('Airport')}
+        >
+          Airports Worldwide
+        </button>
+      </div>
+      <ul className="flex flex-col gap-4">
+        {filteredDestinations.map((destination, index) => (
+          <motion.li
+            key={index}
+            className="flex gap-4 items-center bg-white p-4 rounded-lg shadow-md"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+          >
+            <img
+              src={images[destination.name] || images['default']}
+              alt={destination.name}
+              className="w-24 h-24 object-cover rounded-md"
+            />
+            <div>
+              <p className="font-semibold">{destination.name}</p>
+              <p className="text-gray-600">{destination.details}</p>
             </div>
-            <ul className="flex flex-col gap-4">
-              {filteredDestinations.map((destination, index) => (
-                <motion.li
-                  key={index}
-                  className="flex gap-4 items-center bg-white p-4 rounded-lg shadow-md"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                >
-                  <img
-                    src={images[destination.name] || images['default']}
-                    alt={destination.name}
-                    className="w-24 h-24 object-cover rounded-md"
-                  />
-                  <div>
-                    <p className="font-semibold">{destination.name}</p>
-                    <p className="text-gray-600">{destination.details}</p>
-                  </div>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="font-bold text-black text-xl mb-4">Frequently Asked Questions</h2>
-            <ul className="flex flex-col gap-4">
-              {faqData.map((faq, index) => (
-                <li key={index} className="bg-white p-4 rounded-lg shadow-md">
-                  <div
-                    onClick={() => toggleFAQ(index)}
-                    className="flex justify-between items-center cursor-pointer"
-                  >
-                    <h3 className="font-semibold">{faq.question}</h3>
-                    <FontAwesomeIcon
-                      icon={activeFAQ === index ? faChevronUp : faChevronDown}
-                    />
-                  </div>
-                  {activeFAQ === index && (
-                    <div className="mt-2 text-gray-600">
-                      <p>{faq.answer}</p>
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </motion.div>
+          </motion.li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h2 className="font-bold text-black text-xl mb-4">Frequently Asked Questions</h2>
+      <ul className="grid grid-col gap-4"> {/* Changed from grid to flex and removed grid-cols-1 */}
+        {faqData.map((faq, index) => (
+          <li key={index} className="bg-white p-4 rounded-lg shadow-md">
+            <div
+              onClick={() => toggleFAQ(index)}
+              className="flex justify-between items-center cursor-pointer"
+            >
+              <h3 className="font-semibold">{faq.question}</h3>
+              <FontAwesomeIcon
+                icon={activeFAQ === index ? faChevronUp : faChevronDown}
+              />
+            </div>
+            {activeFAQ === index && (
+              <div className="mt-2 text-gray-600">
+                <p>{faq.answer}</p>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</motion.div>
+
     </div>
   );
 };
